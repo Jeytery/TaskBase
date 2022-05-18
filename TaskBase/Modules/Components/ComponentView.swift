@@ -24,10 +24,12 @@ fileprivate class ColorView: CircleView {
             $0.centerY.equalToSuperview()
         }
         iconView.contentMode = .scaleAspectFit
-        iconView.tintColor = Luma.blackOrWhite(color)
+        iconView.tintColor = Colors.monochrome
         
         titleLabel.text = title
-        titleLabel.font = .systemFont(ofSize: 19, weight: .semibold)
+        titleLabel.font = .systemFont(ofSize: 18, weight: .semibold)
+        titleLabel.textColor = Colors.monochrome
+        
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints() {
             $0.left.equalTo(iconView.snp.right).offset(2.5)
@@ -35,8 +37,6 @@ fileprivate class ColorView: CircleView {
         }
         
         backgroundColor = color
-        
-        titleLabel.textColor = Luma.blackOrWhite(color)
     }
     
     required init?(coder: NSCoder) {
@@ -56,8 +56,8 @@ class ComponentView: UIView {
         addSubview(colorView)
         colorView.snp.makeConstraints() {
             $0.left.top.equalToSuperview().offset(20)
-            $0.height.equalTo(50)
-            $0.width.equalToSuperview().dividedBy(2)
+            $0.height.equalTo(40)
+            $0.width.equalToSuperview().dividedBy(2.3)
         }
         
         addSubview(titleLabel)
@@ -68,9 +68,9 @@ class ComponentView: UIView {
         }
         titleLabel.text = title
         titleLabel.numberOfLines = 0
-        titleLabel.font = .systemFont(ofSize: 22, weight: .semibold)
+        titleLabel.font = .systemFont(ofSize: 19, weight: .semibold)
+        titleLabel.textColor = .darkGray
         
-        //backgroundColor = .systemGray5
         layer.cornerRadius = 20
     }
     

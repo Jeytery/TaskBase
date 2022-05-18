@@ -11,9 +11,10 @@ import SnapKit
 class TabNavigation: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationBar.prefersLargeTitles = true
+        //navigationBar.prefersLargeTitles = true
     }
 }
+
 class TabViewController: UITabBarController {
     
     private let tabControllers = [

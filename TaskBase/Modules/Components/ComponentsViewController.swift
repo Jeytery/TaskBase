@@ -8,7 +8,16 @@
 import UIKit
 import SnapKit
 
+protocol ComponentsViewContorllerDelegate: AnyObject {
+    func componenstViewController(
+        _ viewController: ComponentsViewController,
+        didChoose component: Int
+    )
+}
+
 class ComponentsViewController: UIViewController {
+    
+    weak var delegate: ComponentsViewContorllerDelegate?
     
     private var listView: ListView!
     
@@ -25,14 +34,14 @@ class ComponentsViewController: UIViewController {
         
         let views = [
             ComponentView(
-                color: .systemGreen,
+                color: Colors.green,
                 icon: UIImage(systemName: "repeat")!,
                 title: titles[0],
                 componentName: "Repeater"
                 
             ),
             ComponentView(
-                color: .systemBlue,
+                color: Colors.mint,
                 icon: UIImage(systemName: "person.fill.checkmark")!,
                 title: titles[1],
                 componentName: "Binder"
@@ -50,6 +59,9 @@ class ComponentsViewController: UIViewController {
         
         listView.listDataSource = self
         listView.delegate = self
+        
+        listView.contentInset = .init(top: 20, left: 0, bottom: 0, right: 0)
+        listView.allowsSelection = true
     }
     
     required init?(coder: NSCoder) {
@@ -64,6 +76,27 @@ extension ComponentsViewController: ListViewDataSource, UITableViewDelegate {
             font: .systemFont(ofSize: 22, weight: .semibold)
         )
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+        navigationController?.pushViewController(RepeaterViewController(), animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return .leastNormalMagnitude
+    }
+    
+    func listView(_ listView: ListView, titleForFooterInSection section: Int) -> String? {
+        return " "
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 5
+    }
+    
+    func listView(_ listView: ListView, titleForHeaderInSection section: Int) -> String? {
+        return " "
+    }	
 }
 
 extension String {

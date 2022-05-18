@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SnapKit
 
 protocol ListViewDataSource: AnyObject {
     
@@ -77,7 +76,7 @@ class ListView: UITableView {
     weak var listDataSource: ListViewDataSource?
     
     init(
-        views: [UIView],
+        views: [UIView] = [],
         frame: CGRect = .zero,
         style: Style = .clear
     ) {
@@ -96,6 +95,16 @@ class ListView: UITableView {
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+    
+    func addView(_ view: UIView) {
+        views.append(view)
+        reloadData()
+    }
+    
+    func addViews(_ views: [UIView]) {
+        self.views.append(contentsOf: views)
+        reloadData()
+    }
 }
 
 extension ListView: UITableViewDataSource, UITableViewDelegate {

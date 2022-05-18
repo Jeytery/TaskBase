@@ -6,15 +6,10 @@
 //
 
 import Foundation
+import UIKit
 
-protocol Component {
-    
-}
-
-class Description: Component {
-    
-}
-
-class Repeatly: Component {
-    
+struct Component {
+    let name: String
+    let description: String
+    let icon: UIImage
 }
