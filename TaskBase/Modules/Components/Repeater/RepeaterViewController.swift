@@ -68,7 +68,7 @@ class RepeaterViewController: UIViewController, ListViewDataSource, UITableViewD
         }
         
         let cell1 = RepeaterCell(icon: UIImage(systemName: "clock.fill")!, color: .systemRed, title: "Time")
-        let cell2 = RepeaterCell(icon: UIImage(systemName: "calendar")!, color: .systemBlue, title: "Repeat Logic")
+        let cell2 = RepeaterCell(icon: UIImage(systemName: "repeat")!, color: .systemBlue, title: "Repeat Logic")
     
         listView.addViews([cell1, cell2])
         listView.listDataSource = self

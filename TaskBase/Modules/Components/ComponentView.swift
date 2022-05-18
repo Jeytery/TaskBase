@@ -68,7 +68,7 @@ class ComponentView: UIView {
         }
         titleLabel.text = title
         titleLabel.numberOfLines = 0
-        titleLabel.font = .systemFont(ofSize: 19, weight: .semibold)
+        titleLabel.font = .systemFont(ofSize: 17, weight: .regular)
         titleLabel.textColor = .darkGray
         
         layer.cornerRadius = 20

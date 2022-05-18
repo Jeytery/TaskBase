@@ -83,7 +83,7 @@ extension ComponentsViewController: ListViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return .leastNormalMagnitude
+        return 5
     }
     
     func listView(_ listView: ListView, titleForFooterInSection section: Int) -> String? {
