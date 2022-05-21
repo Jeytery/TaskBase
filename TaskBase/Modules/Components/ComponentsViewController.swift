@@ -33,18 +33,15 @@ class ComponentsViewController: UIViewController {
         title = "Components"
         
         let views = [
-            ComponentView(
-                color: Colors.green,
+            IconInfoView(
                 icon: UIImage(systemName: "repeat")!,
-                title: titles[0],
-                componentName: "Repeater"
-                
+                color: .systemBlue,
+                title: "Repeater"
             ),
-            ComponentView(
-                color: Colors.mint,
-                icon: UIImage(systemName: "person.fill.checkmark")!,
-                title: titles[1],
-                componentName: "Binder"
+            IconInfoView(
+                icon: UIImage(systemName: "person.fill")!,
+                color: .systemTeal,
+                title: "Binder"
             )
         ]
         
@@ -71,23 +68,16 @@ class ComponentsViewController: UIViewController {
 
 extension ComponentsViewController: ListViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100 + titles[indexPath.section].height(
-            withConstrainedWidth: tableView.frame.width - 60,
-            font: .systemFont(ofSize: 22, weight: .semibold)
-        )
+        return 70
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        tableView.deselectRow(at: indexPath, animated: true)
         navigationController?.pushViewController(RepeaterViewController(), animated: true)
     }
     
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 5
-    }
-    
     func listView(_ listView: ListView, titleForFooterInSection section: Int) -> String? {
-        return " "
+        return titles[section]
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

@@ -8,56 +8,21 @@
 import UIKit
 import SnapKit
 
-class RepeaterCell: UIView {
-    
-    private let titleLabel = UILabel()
-    private let iconView = UIImageView()
-    
-    private let colorView = UIView()
-    
-    init(icon: UIImage, color: UIColor, title: String) {
-        super.init(frame: .zero)
-        
-        colorView.addSubview(iconView)
-        iconView.snp.makeConstraints() {
-            $0.height.width.equalToSuperview().dividedBy(1.35)
-            $0.center.equalToSuperview()
-        }
-        iconView.contentMode = .scaleAspectFit
-        iconView.image = icon
-        
-        iconView.tintColor = .white
-        
-        addSubview(colorView)
-        colorView.snp.makeConstraints() {
-            $0.centerY.equalToSuperview()
-            $0.left.equalToSuperview().offset(15)
-            $0.height.equalToSuperview().dividedBy(2)
-            $0.width.equalTo(colorView.snp.height)
-            
-        }
-        colorView.backgroundColor = color
-        colorView.layer.cornerRadius = 10
-        
-        
-        addSubview(titleLabel)
-        titleLabel.snp.makeConstraints() {
-            $0.left.equalTo(iconView.snp.right).offset(15)
-            $0.centerY.equalToSuperview()
-        }
-        
-        titleLabel.font = .systemFont(ofSize: 20, weight: .regular)
-        titleLabel.text = title
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError()
-    }
-}
-
 class RepeaterViewController: UIViewController, ListViewDataSource, UITableViewDelegate {
     
     private let listView = ListView(style: .insetGrouped)
+    
+    private let timeCell = IconInfoView(
+        icon: UIImage(systemName: "clock.fill")!,
+        color: .systemRed,
+        title: "Time"
+    )
+    
+    private let repeaterLogicCell = IconInfoView(
+        icon: UIImage(systemName: "repeat")!,
+        color: .systemBlue,
+        title: "Repeat Logic"
+    )
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -67,13 +32,24 @@ class RepeaterViewController: UIViewController, ListViewDataSource, UITableViewD
             $0.edges.equalToSuperview()
         }
         
-        let cell1 = RepeaterCell(icon: UIImage(systemName: "clock.fill")!, color: .systemRed, title: "Time")
-        let cell2 = RepeaterCell(icon: UIImage(systemName: "repeat")!, color: .systemBlue, title: "Repeat Logic")
-    
-        listView.addViews([cell1, cell2])
+        listView.addViews(
+            [timeCell, repeaterLogicCell]
+        )
+        
         listView.listDataSource = self
         listView.delegate = self
+        listView.allowsSelection = true
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .done,
+            target: self,
+            action: #selector(a)
+        )
+        
+        navigationItem.rightBarButtonItem?.isEnabled = false
     }
+    
+    @objc func a() {}
     
     required init?(coder: NSCoder) {
         fatalError()
@@ -103,6 +79,60 @@ class RepeaterViewController: UIViewController, ListViewDataSource, UITableViewD
         
         return " "
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if indexPath.section == 0 {
+            let vc = RepeaterTimeViewController()
+            vc.delegate = self
+            let nc = UINavigationController(rootViewController: vc)
+            present(nc, animated: true, completion: nil)
+        }
+        
+        if indexPath.section == 1 {
+            let vc = RepeaterLogicViewController()
+            vc.delegate = self
+            let nc = UINavigationController(rootViewController: vc)
+            present(nc, animated: true, completion: nil)
+        }
+    }
 }
 
+extension RepeaterViewController: RepeaterLogicViewControllerDelegate {
+    func repeaterLogicViewController(_ viewController: UIViewController, didPick option: RepeaterLogic) {
+        viewController.dismiss(animated: true, completion: nil)
+        repeaterLogicCell.showSubtitle(option.rawValue)
+    }
+}
+
+extension RepeaterViewController: RepeaterTimeViewControllerDelegate {
+    func repeaterTimerViewController(
+        _ viewController: RepeaterTimeViewController,
+        didPick hours: Int,
+        minutes: Int
+    ) {
+        viewController.dismiss(animated: true, completion: nil)
+        
+        var hoursString = ""
+        var minutesString = ""
+        
+        if hours < 10 {
+            hoursString = "0" + String(hours)
+        }
+        else {
+            hoursString = String(hours)
+        }
+        
+        if minutes < 10 {
+            minutesString = "0" + String(minutes)
+        }
+        else {
+            minutesString = String(minutes)
+        }
+        
+        timeCell.showSubtitle(hoursString + ":" + minutesString)
+        navigationItem.rightBarButtonItem?.isEnabled = true
+    }
+}
 
