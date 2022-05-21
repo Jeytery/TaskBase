@@ -9,58 +9,6 @@ import Foundation
 import UIKit
 import SnapKit
 
-class BigRepeaterView: UIView {
-    
-    private let labelStackView = UIStackView()
-        
-    private let titleLabel = UILabel()
-    private let iconView = UIImageView()
-    
-    private let colorView = UIView()
-    
-    init(icon: UIImage, color: UIColor, title: String) {
-        super.init(frame: .zero)
-        
-        colorView.addSubview(iconView)
-        iconView.snp.makeConstraints() {
-            $0.height.width.equalToSuperview().dividedBy(1.35)
-            $0.center.equalToSuperview()
-        }
-        iconView.contentMode = .scaleAspectFit
-        iconView.image = icon
-        
-        iconView.tintColor = .white
-        
-        addSubview(colorView)
-        colorView.snp.makeConstraints() {
-            $0.centerY.equalToSuperview()
-            $0.left.equalToSuperview().offset(15)
-            $0.height.equalToSuperview().dividedBy(2)
-            $0.width.equalTo(colorView.snp.height)
-        }
-        colorView.backgroundColor = color
-        colorView.layer.cornerRadius = 10
-        
-        
-        addSubview(labelStackView)
-        labelStackView.snp.makeConstraints() {
-            $0.left.equalTo(iconView.snp.right).offset(15)
-            $0.centerY.equalToSuperview()
-        }
-        
-        labelStackView.axis = .vertical
-    
-        labelStackView.addArrangedSubview(titleLabel)
-        
-        titleLabel.font = .systemFont(ofSize: 20, weight: .regular)
-        titleLabel.text = title
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError()
-    }
-}
-
 class TaskViewController: UIViewController {
     
     private let listView = ListView(style: .insetGrouped)

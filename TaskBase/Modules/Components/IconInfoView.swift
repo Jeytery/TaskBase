@@ -11,12 +11,10 @@ import SnapKit
 class IconInfoView: UIView {
     
     private let labelStackView = UIStackView()
-    
-    private let lockImageView = UIImageView()
-    
+    private let titleLabel = UILabel()
     private let subtitleLabel = UILabel()
     
-    private let titleLabel = UILabel()
+    private let lockImageView = UIImageView()
     private let iconView = UIImageView()
     
     private let colorView = UIView()
@@ -24,6 +22,22 @@ class IconInfoView: UIView {
     init(icon: UIImage, color: UIColor, title: String) {
         super.init(frame: .zero)
         
+        configureIconView(icon: icon)
+        configureColorView(color: color)
+
+        configureLockImageView()
+        
+        configureStackView(title: title)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
+}
+
+//MARK: - internal funcions
+private extension IconInfoView {
+    func configureIconView(icon: UIImage) {
         colorView.addSubview(iconView)
         iconView.snp.makeConstraints() {
             $0.height.width.equalToSuperview().dividedBy(1.35)
@@ -33,7 +47,9 @@ class IconInfoView: UIView {
         iconView.image = icon
         
         iconView.tintColor = .white
-        
+    }
+    
+    func configureColorView(color: UIColor) {
         addSubview(colorView)
         colorView.snp.makeConstraints() {
             $0.centerY.equalToSuperview()
@@ -43,14 +59,9 @@ class IconInfoView: UIView {
         }
         colorView.backgroundColor = color
         colorView.layer.cornerRadius = 10
-        
-        subtitleLabel.isHidden = true
-        subtitleLabel.font = .systemFont(ofSize: 16, weight: .regular)
-        subtitleLabel.textColor = .systemBlue
-        
-        titleLabel.font = .systemFont(ofSize: 20, weight: .regular)
-        titleLabel.text = title
-        
+    }
+    
+    func configureLockImageView() {
         addSubview(lockImageView)
         lockImageView.image = UIImage(systemName: "lock.fill")
         lockImageView.snp.makeConstraints() {
@@ -63,7 +74,9 @@ class IconInfoView: UIView {
         
         lockImageView.isHidden = true
         lockImageView.contentMode = .scaleAspectFit
-        
+    }
+    
+    func configureStackView(title: String) {
         addSubview(labelStackView)
         labelStackView.snp.makeConstraints() {
             $0.left.equalTo(iconView.snp.right).offset(15)
@@ -75,12 +88,18 @@ class IconInfoView: UIView {
     
         labelStackView.addArrangedSubview(titleLabel)
         labelStackView.addArrangedSubview(subtitleLabel)
+        
+        subtitleLabel.isHidden = true
+        subtitleLabel.font = .systemFont(ofSize: 16, weight: .regular)
+        subtitleLabel.textColor = .systemBlue
+        
+        titleLabel.font = .systemFont(ofSize: 20, weight: .regular)
+        titleLabel.text = title
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError()
-    }
-    
+}
+
+//MARK: - public interface
+extension IconInfoView {
     func showSubtitle(_ subtitle: String) {
         subtitleLabel.text = subtitle
         subtitleLabel.isHidden = false
