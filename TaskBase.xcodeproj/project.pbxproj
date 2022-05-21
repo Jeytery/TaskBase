@@ -13,8 +13,9 @@
 		3E449033282824CB00190FE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E449032282824CB00190FE2 /* Assets.xcassets */; };
 		3E449036282824CB00190FE2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E449034282824CB00190FE2 /* LaunchScreen.storyboard */; };
 		3E44903F282824FB00190FE2 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3E44903E282824FB00190FE2 /* SnapKit */; };
-		3E4490452828299100190FE2 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4490442828299100190FE2 /* Model.swift */; };
 		3E46A51428393DAD005371EF /* NavigationButtonable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E46A51328393DAD005371EF /* NavigationButtonable.swift */; };
+		3E46A51728396817005371EF /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E46A51628396817005371EF /* Component.swift */; };
+		3E46A51928396952005371EF /* RepeaterComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E46A51828396952005371EF /* RepeaterComponent.swift */; };
 		3E4BF9602835776200A6F24F /* ExpandTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4BF95F2835776200A6F24F /* ExpandTableView.swift */; };
 		3E4BF9632835864400A6F24F /* RepeaterLogicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4BF9622835864400A6F24F /* RepeaterLogicViewController.swift */; };
 		3E4BF99B2836DDD700A6F24F /* IconInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4BF99A2836DDD700A6F24F /* IconInfoView.swift */; };
@@ -42,8 +43,9 @@
 		3E449032282824CB00190FE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3E449035282824CB00190FE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3E449037282824CB00190FE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3E4490442828299100190FE2 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		3E46A51328393DAD005371EF /* NavigationButtonable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButtonable.swift; sourceTree = "<group>"; };
+		3E46A51628396817005371EF /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
+		3E46A51828396952005371EF /* RepeaterComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeaterComponent.swift; sourceTree = "<group>"; };
 		3E4BF95F2835776200A6F24F /* ExpandTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandTableView.swift; sourceTree = "<group>"; };
 		3E4BF9622835864400A6F24F /* RepeaterLogicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeaterLogicViewController.swift; sourceTree = "<group>"; };
 		3E4BF99A2836DDD700A6F24F /* IconInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconInfoView.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 		3E449028282824C900190FE2 /* TaskBase */ = {
 			isa = PBXGroup;
 			children = (
+				3E46A5152839680A005371EF /* Components */,
 				3EEDD82D282C45460065D589 /* Utils */,
 				3EEDD80F282ADCF40065D589 /* Modules */,
 				3EEDD80D282ADCE50065D589 /* UserInterface */,
@@ -109,17 +112,8 @@
 		3E4490422828298600190FE2 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				3E4490432828298A00190FE2 /* Model */,
 			);
 			path = Repository;
-			sourceTree = "<group>";
-		};
-		3E4490432828298A00190FE2 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				3E4490442828299100190FE2 /* Model.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		3E46A51228393DA1005371EF /* Protocols */ = {
@@ -128,6 +122,15 @@
 				3E46A51328393DAD005371EF /* NavigationButtonable.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		3E46A5152839680A005371EF /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				3E46A51628396817005371EF /* Component.swift */,
+				3E46A51828396952005371EF /* RepeaterComponent.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		3E4BF9612835863100A6F24F /* Repeater */ = {
@@ -292,7 +295,6 @@
 				3EEDD828282C40D40065D589 /* Colors.swift in Sources */,
 				3E4BF9602835776200A6F24F /* ExpandTableView.swift in Sources */,
 				3EEDD806282AD3900065D589 /* TasksViewController.swift in Sources */,
-				3E4490452828299100190FE2 /* Model.swift in Sources */,
 				3EEDD808282AD3E70065D589 /* TabViewController.swift in Sources */,
 				3E46A51428393DAD005371EF /* NavigationButtonable.swift in Sources */,
 				3EEDD80C282AD61F0065D589 /* DistributorViewController.swift in Sources */,
@@ -300,10 +302,12 @@
 				3EEDD804282AD3820065D589 /* TaskViewController.swift in Sources */,
 				3EEDD826282C40930065D589 /* CircleView.swift in Sources */,
 				3EEDD824282C40340065D589 /* ComponentView.swift in Sources */,
+				3E46A51928396952005371EF /* RepeaterComponent.swift in Sources */,
 				3EEDD811282ADD2B0065D589 /* ComponentsViewController.swift in Sources */,
 				3EEDD82A282C40D80065D589 /* Design.swift in Sources */,
 				3E3B30D52834227A00C86763 /* BinderViewController.swift in Sources */,
 				3E4BF99D2836E3F300A6F24F /* RepeaterTimeViewController.swift in Sources */,
+				3E46A51728396817005371EF /* Component.swift in Sources */,
 				3E4BF9632835864400A6F24F /* RepeaterLogicViewController.swift in Sources */,
 				3EEDD80A282AD6120065D589 /* SettingsViewController.swift in Sources */,
 				3E4BF99B2836DDD700A6F24F /* IconInfoView.swift in Sources */,
