@@ -19,14 +19,19 @@ class IconInfoView: UIView {
     
     private let colorView = UIView()
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        configureIconView(icon: UIImage())
+        configureColorView(color: .red)
+        configureLockImageView()
+        configureStackView(title: "Untitled")
+    }
+    
     init(icon: UIImage, color: UIColor, title: String) {
         super.init(frame: .zero)
-        
         configureIconView(icon: icon)
         configureColorView(color: color)
-
         configureLockImageView()
-        
         configureStackView(title: title)
     }
     
@@ -115,5 +120,11 @@ extension IconInfoView {
     
     func unlock() {
         lockImageView.isHidden = true
+    }
+    
+    func configure(icon: UIImage, color: UIColor, title: String) {
+        iconView.image = icon
+        colorView.backgroundColor = color
+        titleLabel.text = title
     }
 }
