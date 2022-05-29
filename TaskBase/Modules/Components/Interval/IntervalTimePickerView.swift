@@ -20,18 +20,34 @@ class IntervalTimePickerView: UIView {
     
     weak var delegate: IntervalTimePickerViewDelegate?
     
-    private let stackView = UIStackView()
+    private(set) var hours: Int = 0
+    private(set) var minutes: Int = 0
     
+    private let stackView = UIStackView()
     private let hoursPicker = UIPickerView()
     private let minutesPicker = UIPickerView()
-    
-    private var hours = 0
-    private var minutes = 0
-    
+
     init() {
         super.init(frame: .zero)
         backgroundColor = .systemBackground
-        
+        configureStackView()
+        configureDelegates()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
+}
+
+private extension IntervalTimePickerView {
+    func configureDelegates() {
+        hoursPicker.dataSource = self
+        minutesPicker.dataSource = self
+        hoursPicker.delegate = self
+        minutesPicker.delegate = self
+    }
+    
+    func configureStackView() {
         addSubview(stackView)
         stackView.snp.makeConstraints() {
             $0.center.equalToSuperview()
@@ -43,17 +59,6 @@ class IntervalTimePickerView: UIView {
         stackView.addArrangedSubview(minutesPicker)
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
-        
-        hoursPicker.dataSource = self
-        minutesPicker.dataSource = self
-        
-        hoursPicker.delegate = self
-        minutesPicker.delegate = self
-        
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError()
     }
 }
 

@@ -130,7 +130,7 @@ extension RightNavigationButtonable where Self: UIViewController {
             )
         }
         
-        tabButton.tintColor = rightNavigationButtonTintColor()
+         tabButton.tintColor = rightNavigationButtonTintColor()
         
         navigationItem.rightBarButtonItem = tabButton
     }

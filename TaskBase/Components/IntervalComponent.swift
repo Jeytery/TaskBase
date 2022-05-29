@@ -8,34 +8,32 @@
 import Foundation
 import UIKit
 
-struct IntervalComponentInput {
+struct IntervalComponentHandlerInput {
     let interval: Int
     let time: Date
-    let startDate: Date
 }
 
-struct IntervalComponentOutput {}
-
-class IntervalComponent {
+class IntervalComponentHandler {
     
-    private var input: IntervalComponentInput!
+    private var input: IntervalComponentHandlerInput!
+    
     private var lastDate: Date!
+    private var originalDate: Date!
     
-    init(_ input: IntervalComponentInput) {
+    init(_ input: IntervalComponentHandlerInput) {
         self.input = input
     }
 }
 
-private extension IntervalComponent {
+private extension IntervalComponentHandler {
     func storeLastDate(_ date: Date) {
         self.lastDate = date
     }
 }
 
-extension IntervalComponent: AppearComponentHandler {
+extension IntervalComponentHandler: AppearComponentHandler {
     var shouldAppear: Bool {
         let today = Date()
-        let startDate = input.startDate
         let interval = input.interval
         storeLastDate(today)
         return false

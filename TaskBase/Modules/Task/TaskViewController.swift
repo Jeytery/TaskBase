@@ -58,6 +58,10 @@ extension TaskViewController: RightNavigationButtonable {
     func rightNavigationButtonDidTap() {
         let nc = UINavigationController(rootViewController: ComponentsViewController())
         present(nc, animated: true, completion: nil)
+        
+        let viewController = UIViewController()
+        viewController.view.backgroundColor = .red
+        //present(viewController, animated: true, completion: nil)
     }
 }
 

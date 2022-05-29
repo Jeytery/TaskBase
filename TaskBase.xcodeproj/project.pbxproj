@@ -24,6 +24,7 @@
 		3E8F688A2843833500120B75 /* IntervalTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8F68892843833500120B75 /* IntervalTimeView.swift */; };
 		3E8F688C2843834600120B75 /* IntervalTimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8F688B2843834600120B75 /* IntervalTimePickerView.swift */; };
 		3E8F688E2843834D00120B75 /* IntervalLogicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8F688D2843834D00120B75 /* IntervalLogicView.swift */; };
+		3E8F689028439FE300120B75 /* __IntervalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8F688F28439FE300120B75 /* __IntervalViewController.swift */; };
 		3EEDD804282AD3820065D589 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEDD803282AD3820065D589 /* TaskViewController.swift */; };
 		3EEDD806282AD3900065D589 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEDD805282AD3900065D589 /* TasksViewController.swift */; };
 		3EEDD808282AD3E70065D589 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEDD807282AD3E70065D589 /* TabViewController.swift */; };
@@ -31,7 +32,6 @@
 		3EEDD80C282AD61F0065D589 /* DistributorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEDD80B282AD61F0065D589 /* DistributorViewController.swift */; };
 		3EEDD811282ADD2B0065D589 /* ComponentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEDD810282ADD2B0065D589 /* ComponentsViewController.swift */; };
 		3EEDD816282ADFF00065D589 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEDD815282ADFF00065D589 /* ListView.swift */; };
-		3EEDD824282C40340065D589 /* ComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEDD823282C40340065D589 /* ComponentView.swift */; };
 		3EEDD826282C40930065D589 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEDD825282C40930065D589 /* CircleView.swift */; };
 		3EEDD828282C40D40065D589 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEDD827282C40D40065D589 /* Colors.swift */; };
 		3EEDD82A282C40D80065D589 /* Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEDD829282C40D80065D589 /* Design.swift */; };
@@ -58,6 +58,7 @@
 		3E8F68892843833500120B75 /* IntervalTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalTimeView.swift; sourceTree = "<group>"; };
 		3E8F688B2843834600120B75 /* IntervalTimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalTimePickerView.swift; sourceTree = "<group>"; };
 		3E8F688D2843834D00120B75 /* IntervalLogicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalLogicView.swift; sourceTree = "<group>"; };
+		3E8F688F28439FE300120B75 /* __IntervalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = __IntervalViewController.swift; sourceTree = "<group>"; };
 		3EEDD803282AD3820065D589 /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
 		3EEDD805282AD3900065D589 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		3EEDD807282AD3E70065D589 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
@@ -65,7 +66,6 @@
 		3EEDD80B282AD61F0065D589 /* DistributorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistributorViewController.swift; sourceTree = "<group>"; };
 		3EEDD810282ADD2B0065D589 /* ComponentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsViewController.swift; sourceTree = "<group>"; };
 		3EEDD815282ADFF00065D589 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
-		3EEDD823282C40340065D589 /* ComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentView.swift; sourceTree = "<group>"; };
 		3EEDD825282C40930065D589 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		3EEDD827282C40D40065D589 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		3EEDD829282C40D80065D589 /* Design.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Design.swift; sourceTree = "<group>"; };
@@ -149,6 +149,7 @@
 				3E8F68892843833500120B75 /* IntervalTimeView.swift */,
 				3E8F688B2843834600120B75 /* IntervalTimePickerView.swift */,
 				3E8F688D2843834D00120B75 /* IntervalLogicView.swift */,
+				3E8F688F28439FE300120B75 /* __IntervalViewController.swift */,
 			);
 			path = Interval;
 			sourceTree = "<group>";
@@ -161,6 +162,14 @@
 				3E4BF99C2836E3F300A6F24F /* RepeaterTimeViewController.swift */,
 			);
 			path = Repeater;
+			sourceTree = "<group>";
+		};
+		3E8F68912843BEAA00120B75 /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				3EEDD805282AD3900065D589 /* TasksViewController.swift */,
+			);
+			path = Tasks;
 			sourceTree = "<group>";
 		};
 		3EEDD80D282ADCE50065D589 /* UserInterface */ = {
@@ -179,6 +188,7 @@
 			children = (
 				3EEDD815282ADFF00065D589 /* ListView.swift */,
 				3EEDD825282C40930065D589 /* CircleView.swift */,
+				3E4BF99A2836DDD700A6F24F /* IconInfoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -186,6 +196,7 @@
 		3EEDD80F282ADCF40065D589 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				3E8F68912843BEAA00120B75 /* Tasks */,
 				3EEDD814282ADD3F0065D589 /* Distribution */,
 				3EEDD813282ADD340065D589 /* Task */,
 				3EEDD812282ADD2D0065D589 /* Components */,
@@ -201,8 +212,6 @@
 				3E46A520283A89EB005371EF /* Interval */,
 				3E4BF9612835863100A6F24F /* Repeater */,
 				3EEDD810282ADD2B0065D589 /* ComponentsViewController.swift */,
-				3EEDD823282C40340065D589 /* ComponentView.swift */,
-				3E4BF99A2836DDD700A6F24F /* IconInfoView.swift */,
 				3E46A523283A8B8E005371EF /* TimeViewController.swift */,
 			);
 			path = Components;
@@ -211,7 +220,6 @@
 		3EEDD813282ADD340065D589 /* Task */ = {
 			isa = PBXGroup;
 			children = (
-				3EEDD805282AD3900065D589 /* TasksViewController.swift */,
 				3EEDD803282AD3820065D589 /* TaskViewController.swift */,
 			);
 			path = Task;
@@ -327,7 +335,6 @@
 				3EEDD82F282C45550065D589 /* Luma.swift in Sources */,
 				3EEDD804282AD3820065D589 /* TaskViewController.swift in Sources */,
 				3EEDD826282C40930065D589 /* CircleView.swift in Sources */,
-				3EEDD824282C40340065D589 /* ComponentView.swift in Sources */,
 				3EEDD811282ADD2B0065D589 /* ComponentsViewController.swift in Sources */,
 				3EEDD82A282C40D80065D589 /* Design.swift in Sources */,
 				3E4BF99D2836E3F300A6F24F /* RepeaterTimeViewController.swift in Sources */,
@@ -337,6 +344,7 @@
 				3E4BF99B2836DDD700A6F24F /* IconInfoView.swift in Sources */,
 				3E3B30D32834227100C86763 /* RepeaterViewController.swift in Sources */,
 				3EEDD816282ADFF00065D589 /* ListView.swift in Sources */,
+				3E8F689028439FE300120B75 /* __IntervalViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

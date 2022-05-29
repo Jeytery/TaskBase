@@ -22,6 +22,8 @@ class ComponentsViewController: UIViewController {
     private let listView = ListView(style: .insetGrouped)
     private let components = Component.all
     
+    private var component: Component!
+    
     init() {
         super.init(nibName: nil, bundle: nil)
         configureViewController()
@@ -46,13 +48,13 @@ private extension ComponentsViewController {
             $0.left.equalToSuperview()
             $0.right.equalToSuperview()
         }
-        
+
         listView.listDataSource = self
         listView.delegate = self
-        
+
         listView.contentInset = .init(top: 20, left: 0, bottom: 0, right: 0)
         listView.allowsSelection = true
-        
+
         for component in components {
             let _view = IconInfoView(
                 icon: component.information.icon,
@@ -78,8 +80,7 @@ extension ComponentsViewController: ListViewDataSource, UITableViewDelegate {
     ) {
         tableView.deselectRow(at: indexPath, animated: true)
         let viewController = components[indexPath.section].information.viewController
-        let nc = UINavigationController(rootViewController: viewController)
-        present(nc, animated: true, completion: nil)
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     func listView(
@@ -101,5 +102,15 @@ extension ComponentsViewController: ListViewDataSource, UITableViewDelegate {
         titleForHeaderInSection section: Int
     ) -> String? {
         return " "
-    }	
+    }
+}
+
+extension ComponentsViewController: RightNavigationButtonable {
+    func rightNavigationButtonDidTap() {
+        delegate?.componenstViewController(self, didChoose: component)
+    }
+    
+    func rightNavigationButtonTitle() -> String? {
+        return "done"
+    }
 }

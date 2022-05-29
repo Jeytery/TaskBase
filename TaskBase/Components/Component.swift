@@ -18,7 +18,7 @@ struct Component {
     let information: ComponentInformation
     
     var handler: ComponentHandler!
-
+    
     mutating func setHandler(_ handler: ComponentHandler) {
         self.handler = handler
     }
@@ -37,9 +37,9 @@ struct Component {
         )
     )
    
-    static func interval(handler: IntervalComponent) -> Component {
+    static func interval(handler: IntervalComponentHandler) -> Component {
         var component: Component = .interval
-        component.handler = handler
+        component.setHandler(handler)
         return component
     }
     
@@ -49,11 +49,11 @@ struct Component {
             id: 1,
             name: "Description",
             description: "1 desc",
-            icon: UIImage(systemName: "repeat")!,
+            icon: UIImage(systemName: "highlighter")!,
             color: .systemBlue,
             conflictedComponets: nil,
             componentType: .appear,
-            viewController: __IntervalViewController()
+            viewController: UIViewController()
         )
     )
     
