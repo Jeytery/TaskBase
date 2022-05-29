@@ -12,44 +12,56 @@ class TasksViewController: UIViewController {
 
     private let tableView = UITableView(frame: .zero, style: .insetGrouped)
     
+    private var tasks: [Task] = []
+    
     init() {
         super.init(nibName: nil, bundle: nil)
-        view.backgroundColor = .systemBackground
-        tabBarItem = .init(title: nil, image: UIImage(systemName: "circle.grid.2x2.fill"), tag: 0)
-        title = "Title"
+        configureViewController()
         configureTableView()
-//
-//        let tabButton = UIBarButtonItem(
-//            image: UIImage(systemName: "plus"),
-//            style: .plain,
-//            target: self,
-//            action: #selector(tabButtonDidTap)
-//        )
-//        navigationItem.rightBarButtonItem = tabButton
-        
         configureRightNavigationButton()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
     }
     
     required init?(coder: NSCoder) {
         fatalError()
     }
-    
-    @objc func tabButtonDidTap() {
-        self.present(TabNavigation(rootViewController: TaskViewController()), animated: true, completion: nil)
-    }
 }
 
 private extension TasksViewController {
+    func configureViewController() {
+        view.backgroundColor = .systemBackground
+        tabBarItem = .init(title: nil, image: UIImage(systemName: "circle.grid.2x2.fill"), tag: 0)
+        title = "Title"
+    }
+    
     func configureTableView() {
         view.addSubview(tableView)
         tableView.snp.makeConstraints() {
             $0.edges.equalToSuperview()
         }
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(ViewableTableViewCell<IconInfoView>.self, forCellReuseIdentifier: "cell")
+    }
+}
+
+extension TasksViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tasks.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: "cell",
+            for: indexPath
+        ) as! ViewableTableViewCell<IconInfoView>
+        let task = tasks[indexPath.row]
+        let descDataComp = task.descriptionComponent
+        cell.baseView.configure(
+            icon: UIImage(systemName: "scribble.variable")!,
+            color: .systemBlue,
+            title: descDataComp.handler.outputData
+        )
+        return cell
     }
 }
 
@@ -59,10 +71,20 @@ extension TasksViewController: RightNavigationButtonable {
     }
     
     func rightNavigationButtonDidTap() {
+        let taskVC = TaskViewController()
+        taskVC.delegate = self
         self.present(
-            UINavigationController(rootViewController: TaskViewController()),
+            UINavigationController(rootViewController: taskVC),
             animated: true,
             completion: nil
         )
+    }
+}
+
+extension TasksViewController: TaskViewControllerDelegate {
+    func taskViewController(_ viewController: UIViewController, didCreate task: Task) {
+        viewController.dismiss(animated: true, completion: nil)
+        tasks.append(task)
+        tableView.reloadData()
     }
 }

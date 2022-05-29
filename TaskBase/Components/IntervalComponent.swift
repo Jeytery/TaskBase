@@ -38,6 +38,10 @@ extension IntervalComponentHandler: AppearComponentHandler {
         storeLastDate(today)
         return false
     }
+    
+    var outputData: String {
+        return "12:00, each 3 days"
+    }
 }
 
 

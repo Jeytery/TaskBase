@@ -9,11 +9,19 @@ import Foundation
 import UIKit
 import SnapKit
 
+protocol TaskViewControllerDelegate: AnyObject {
+    func taskViewController(_ viewController: UIViewController, didCreate task: Task)
+}
+
 class TaskViewController: UIViewController {
+    
+    weak var delegate: TaskViewControllerDelegate?
     
     private let tableView = UITableView(frame: .zero, style: .insetGrouped)
     
     private var components: [Component] = []
+    
+    private let bottomButtom = UIButton()
 
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -22,6 +30,7 @@ class TaskViewController: UIViewController {
       
         configureLeftNavigationButton()
         configureRightNavigationButton()
+        configureBottomButton()
     }
     
     required init?(coder: NSCoder) {
@@ -30,6 +39,30 @@ class TaskViewController: UIViewController {
 }
 
 private extension TaskViewController {
+    func configureBottomButton() {
+        view.addSubview(bottomButtom)
+        bottomButtom.snp.makeConstraints() {
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            $0.width.equalToSuperview().dividedBy(2)
+            $0.height.equalTo(50)
+        }
+        bottomButtom.setTitle("add", for: .normal)
+        bottomButtom.backgroundColor = .black
+        bottomButtom.addTarget(self, action: #selector(bottomButtonDidTap), for: .touchUpInside)
+    }
+    
+    @objc func bottomButtonDidTap() {
+        let task = Task(
+            descriptionComponent: .component(
+                information: Component.description.information,
+                handler: DescriptionComponentHandler()
+            ),
+            components: components
+        )
+        delegate?.taskViewController(self, didCreate: task)
+    }
+    
     func configureViewController() {
         view.backgroundColor = .systemBackground
         title = "Task"

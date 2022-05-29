@@ -57,6 +57,11 @@ struct Component {
         )
     )
     
+    static func component(information: ComponentInformation, handler: ComponentHandler) -> Component {
+        let component = Component(information: information, handler: handler)
+        return component
+    }
+    
     static var all: [Component] {
         return [.interval, .description]
     }
@@ -73,7 +78,9 @@ struct ComponentInformation: Identifiable {
     let viewController: ComponentViewControllerable
 }
 
-protocol ComponentHandler {}
+protocol ComponentHandler {
+    var outputData: String { get }
+}
 
 protocol AppearComponentHandler: ComponentHandler {
     var shouldAppear: Bool { get }
@@ -119,6 +126,8 @@ protocol ComponentInformationnable {
 }
 
 class __IntervalComponentHandler: AppearComponentHandler {
+    var outputData: String = ""
+    
     var shouldAppear: Bool {
         return false
     }
