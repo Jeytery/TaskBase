@@ -14,7 +14,7 @@
 		3E44903F282824FB00190FE2 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3E44903E282824FB00190FE2 /* SnapKit */; };
 		3E46A51428393DAD005371EF /* NavigationButtonable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E46A51328393DAD005371EF /* NavigationButtonable.swift */; };
 		3E46A51728396817005371EF /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E46A51628396817005371EF /* Component.swift */; };
-		3E46A51B283A43E2005371EF /* IntervalComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E46A51A283A43E2005371EF /* IntervalComponent.swift */; };
+		3E46A51B283A43E2005371EF /* IntervalComponentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E46A51A283A43E2005371EF /* IntervalComponentHandler.swift */; };
 		3E46A51D283A486C005371EF /* TaskEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E46A51C283A486C005371EF /* TaskEngine.swift */; };
 		3E46A51F283A7DD8005371EF /* IntervalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E46A51E283A7DD8005371EF /* IntervalViewController.swift */; };
 		3E46A524283A8B8E005371EF /* TimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E46A523283A8B8E005371EF /* TimeViewController.swift */; };
@@ -52,7 +52,7 @@
 		3E449037282824CB00190FE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E46A51328393DAD005371EF /* NavigationButtonable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButtonable.swift; sourceTree = "<group>"; };
 		3E46A51628396817005371EF /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
-		3E46A51A283A43E2005371EF /* IntervalComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalComponent.swift; sourceTree = "<group>"; };
+		3E46A51A283A43E2005371EF /* IntervalComponentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalComponentHandler.swift; sourceTree = "<group>"; };
 		3E46A51C283A486C005371EF /* TaskEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskEngine.swift; sourceTree = "<group>"; };
 		3E46A51E283A7DD8005371EF /* IntervalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalViewController.swift; sourceTree = "<group>"; };
 		3E46A523283A8B8E005371EF /* TimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeViewController.swift; sourceTree = "<group>"; };
@@ -145,8 +145,8 @@
 			isa = PBXGroup;
 			children = (
 				3E46A51628396817005371EF /* Component.swift */,
-				3E46A51A283A43E2005371EF /* IntervalComponent.swift */,
 				3E46A51C283A486C005371EF /* TaskEngine.swift */,
+				3E46A51A283A43E2005371EF /* IntervalComponentHandler.swift */,
 				3E8F68992843CCCB00120B75 /* DescriptionComponentHandler.swift */,
 			);
 			path = Components;
@@ -342,7 +342,7 @@
 				3EEDD82C282C40E00065D589 /* Icons.swift in Sources */,
 				3E46A51F283A7DD8005371EF /* IntervalViewController.swift in Sources */,
 				3E44902A282824C900190FE2 /* AppDelegate.swift in Sources */,
-				3E46A51B283A43E2005371EF /* IntervalComponent.swift in Sources */,
+				3E46A51B283A43E2005371EF /* IntervalComponentHandler.swift in Sources */,
 				3EEDD828282C40D40065D589 /* Colors.swift in Sources */,
 				3EEDD806282AD3900065D589 /* TasksViewController.swift in Sources */,
 				3EEDD808282AD3E70065D589 /* TabViewController.swift in Sources */,

@@ -84,7 +84,10 @@ extension IntervalViewController: RightNavigationButtonable {
         let handler = IntervalComponentHandler(input)
         delegate?.viewController(
             self,
-            didReturn: .interval(handler: handler)
+            didReturn: .component(
+                information: Component.interval.information,
+                handler: handler
+            )
         )
     }
     

@@ -37,12 +37,6 @@ struct Component {
         )
     )
    
-    static func interval(handler: IntervalComponentHandler) -> Component {
-        var component: Component = .interval
-        component.setHandler(handler)
-        return component
-    }
-    
     // description
     static let description = Component(
         information: ComponentInformation(
@@ -90,20 +84,7 @@ protocol DataComponentHandler: ComponentHandler {
     func getDataView() -> UIView
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-//MARK: - test
+// test
 
 struct __ComponentInformation: Identifiable {
     let id: Int
@@ -111,40 +92,68 @@ struct __ComponentInformation: Identifiable {
     let description: String
     let icon: UIImage
     let color: UIColor
-    let conflictedComponets: [__ComponentID]?
+    let conflictedComponets: [__ComponentInformation]?
     let componentType: ComponentType
-    let viewController: UIViewController
-}
-
-enum __ComponentID: Int {
-    case interval = 0
-    case description = 1
-}
-
-protocol ComponentInformationnable {
-    static var information: __ComponentInformation { get }
-}
-
-class __IntervalComponentHandler: AppearComponentHandler {
-    var outputData: String = ""
     
-    var shouldAppear: Bool {
-        return false
-    }
-}
-
-extension __IntervalComponentHandler: ComponentInformationnable {
-    static var information = __ComponentInformation(
-        id: 0,
-        name: "",
-        description: "",
-        icon: UIImage(),
-        color: .red,
-        conflictedComponets: [.interval, .description],
-        componentType: .appear,
-        viewController: UIViewController()
+    static let description = __ComponentInformation(
+       id: 0,
+       name: "Description",
+       description: "1 desc",
+       icon: UIImage(systemName: "highlighter")!,
+       color: .systemBlue,
+       conflictedComponets: nil,
+       componentType: .appear
+   )
+    
+    static let interval = __ComponentInformation(
+        id: 1,
+        name: "Description",
+        description: "1 desc",
+        icon: UIImage(systemName: "highlighter")!,
+        color: .systemBlue,
+        conflictedComponets: nil,
+        componentType: .appear
     )
 }
 
+struct __Component<RootViewControllerType: UIViewController> {
+    
+    private(set) var information: __ComponentInformation
+    
+    private(set) var handler: ComponentHandler!
+    
+    var rootViewController: RootViewControllerType {
+        return RootViewControllerType()
+    }
+    
+    mutating func setHandler(_ handler: ComponentHandler) {
+        self.handler = handler
+    }
 
+    init(information: __ComponentInformation) {
+        self.information = information
+    }
+}
 
+struct UnhadledComponent {
+    static let interval: __Component<IntervalViewController> = __Component(information: .interval)
+    static let description: __Component<UIViewController> = __Component(information: .description)
+    
+    static func handledComponent<RootViewControllerType: UIViewController>(
+        component: __Component<RootViewControllerType>,
+        handler: ComponentHandler
+    ) -> __Component<RootViewControllerType> {
+        var _component = component
+        _component.setHandler(handler)
+        return _component
+    }
+}
+
+func HandledComponent<RootViewController: UIViewController>(
+    component: __Component<RootViewController>,
+    handler: ComponentHandler
+) -> __Component<RootViewController> {
+    var _component = component
+    _component.setHandler(handler)
+    return _component
+}

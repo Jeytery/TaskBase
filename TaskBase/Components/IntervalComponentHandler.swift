@@ -1,5 +1,5 @@
 //
-//  IntervalComponent.swift
+//  IntervalComponentHandler.swift
 //  TaskBase
 //
 //  Created by Jeytery on 22.05.2022.
