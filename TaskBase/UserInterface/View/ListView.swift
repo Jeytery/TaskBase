@@ -172,7 +172,9 @@ fileprivate class ListTableCell<T: UIView>: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setView(T())
+        let view = T()
+        self.baseView = view
+        setView(view)
     }
     
     init(
@@ -203,5 +205,4 @@ fileprivate class ListTableCell<T: UIView>: UITableViewCell {
         _view.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -edges.right).isActive = true
     }
 }
-
 

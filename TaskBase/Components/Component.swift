@@ -53,7 +53,7 @@ struct Component {
             color: .systemBlue,
             conflictedComponets: nil,
             componentType: .appear,
-            viewController: UIViewController()
+            viewController: IntervalViewController()
         )
     )
     
@@ -70,7 +70,7 @@ struct ComponentInformation: Identifiable {
     let color: UIColor
     let conflictedComponets: [Component]?
     let componentType: ComponentType
-    let viewController: UIViewController
+    let viewController: ComponentViewControllerable
 }
 
 protocol ComponentHandler {}

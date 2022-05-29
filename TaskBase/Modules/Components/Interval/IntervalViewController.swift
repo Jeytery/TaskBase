@@ -14,9 +14,9 @@ protocol IntervalViewControllerDelegate: AnyObject {
     )
 }
 
-class IntervalViewController: UIViewController {
+class IntervalViewController: UIViewController, ComponentViewControllerable {
     
-    weak var delegate: IntervalViewControllerDelegate?
+    weak var delegate: ComponentViewControllerDelegate?
     
     private let listView = ListView(style: .insetGrouped)
     
@@ -82,7 +82,7 @@ extension IntervalViewController: RightNavigationButtonable {
             time: Date()
         )
         let handler = IntervalComponentHandler(input)
-        delegate?.intervalViewController(
+        delegate?.viewController(
             self,
             didReturn: .interval(handler: handler)
         )

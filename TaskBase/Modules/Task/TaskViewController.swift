@@ -11,42 +11,38 @@ import SnapKit
 
 class TaskViewController: UIViewController {
     
-    private let listView = ListView(style: .insetGrouped)
+    private let tableView = UITableView(frame: .zero, style: .insetGrouped)
     
+    private var components: [Component] = []
+
     init() {
         super.init(nibName: nil, bundle: nil)
-        view.backgroundColor = .systemBackground
-        title = "Task"
-        
-        view.addSubview(listView)
-        listView.snp.makeConstraints() {
-            $0.edges.equalToSuperview()
-        }
-        
-        let nameView = IconInfoView(icon: UIImage(systemName: "highlighter")!, color: .systemRed, title: "Information")
-        listView.addView(nameView)
-        
-        nameView.showSubtitle("Clean room, Get the fuck up and clean room")
-        nameView.lock()
-        
-        let repeaterView = IconInfoView(
-            icon: UIImage(systemName: "repeat")!,
-            color: .systemBlue,
-            title: "Repeater"
-        )
-        
-        repeaterView.showSubtitle("12:00, Each 3 days")
-        
-        listView.addView(repeaterView)
-        
+        configureViewController()
+        configureTableView()
+      
         configureLeftNavigationButton()
         configureRightNavigationButton()
-        
-        listView.delegate = self
     }
     
     required init?(coder: NSCoder) {
         fatalError()
+    }
+}
+
+private extension TaskViewController {
+    func configureViewController() {
+        view.backgroundColor = .systemBackground
+        title = "Task"
+    }
+    
+    func configureTableView() {
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints() {
+            $0.edges.equalToSuperview()
+        }
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(ViewableTableViewCell<IconInfoView>.self, forCellReuseIdentifier: "cell")
     }
 }
 
@@ -56,12 +52,10 @@ extension TaskViewController: RightNavigationButtonable {
     }
     
     func rightNavigationButtonDidTap() {
-        let nc = UINavigationController(rootViewController: ComponentsViewController())
+        let componentsViewController = ComponentsViewController()
+        componentsViewController.delegate = self
+        let nc = UINavigationController(rootViewController: componentsViewController)
         present(nc, animated: true, completion: nil)
-        
-        let viewController = UIViewController()
-        viewController.view.backgroundColor = .red
-        //present(viewController, animated: true, completion: nil)
     }
 }
 
@@ -75,8 +69,35 @@ extension TaskViewController: LeftNavigationButtonable {
     }
 }
 
-extension TaskViewController: UITableViewDelegate {
+extension TaskViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: "cell",
+            for: indexPath
+        ) as! ViewableTableViewCell<IconInfoView>
+        
+        let component = components[indexPath.row]
+        cell.baseView.configure(
+            icon: component.information.icon,
+            color: component.information.color,
+            title: component.information.name
+        )
+        cell.baseView.showSubtitle(component.information.description)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return components.count
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
+    }
+}
+
+extension TaskViewController: ComponentsViewContorllerDelegate {
+    func componenstViewController(_ viewController: ComponentsViewController, didChoose component: Component) {
+        components.append(component)
+        tableView.reloadData()
     }
 }

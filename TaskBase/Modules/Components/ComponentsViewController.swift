@@ -81,6 +81,7 @@ extension ComponentsViewController: ListViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let viewController = components[indexPath.section].information.viewController
         navigationController?.pushViewController(viewController, animated: true)
+        viewController.delegate = self
     }
     
     func listView(
@@ -112,5 +113,12 @@ extension ComponentsViewController: RightNavigationButtonable {
     
     func rightNavigationButtonTitle() -> String? {
         return "done"
+    }
+}
+
+extension ComponentsViewController: ComponentViewControllerDelegate {
+    func viewController(_ viewController: UIViewController, didReturn component: Component) {
+        delegate?.componenstViewController(self, didChoose: component)
+        self.dismiss(animated: true, completion: nil)
     }
 }
