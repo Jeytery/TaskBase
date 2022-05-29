@@ -6,25 +6,136 @@
 //
 
 import Foundation
+import UIKit
 
-protocol Component {
-    
-    associatedtype Input
-    associatedtype Output
-    
-    func input(_ input: Input)
-    func output() -> Output
+enum ComponentType {
+    case appear
+    case data
 }
 
-protocol AppearComponent: Component {
-        
+struct Component {
+    
+    let information: ComponentInformation
+    
+    var handler: ComponentHandler!
+
+    mutating func setHandler(_ handler: ComponentHandler) {
+        self.handler = handler
+    }
+    
+    // interval
+    static let interval = Component(
+        information: ComponentInformation(
+            id: 0,
+            name: "Interval",
+            description: "1 desc",
+            icon: UIImage(systemName: "repeat")!,
+            color: .systemBlue,
+            conflictedComponets: nil,
+            componentType: .appear,
+            viewController: IntervalViewController()
+        )
+    )
+   
+    static func interval(handler: IntervalComponent) -> Component {
+        var component: Component = .interval
+        component.handler = handler
+        return component
+    }
+    
+    // description
+    static let description = Component(
+        information: ComponentInformation(
+            id: 1,
+            name: "Description",
+            description: "1 desc",
+            icon: UIImage(systemName: "repeat")!,
+            color: .systemBlue,
+            conflictedComponets: nil,
+            componentType: .appear,
+            viewController: __IntervalViewController()
+        )
+    )
+    
+    static var all: [Component] {
+        return [.interval, .description]
+    }
+}
+
+struct ComponentInformation: Identifiable {
+    let id: Int
+    let name: String
+    let description: String
+    let icon: UIImage
+    let color: UIColor
+    let conflictedComponets: [Component]?
+    let componentType: ComponentType
+    let viewController: UIViewController
+}
+
+protocol ComponentHandler {}
+
+protocol AppearComponentHandler: ComponentHandler {
     var shouldAppear: Bool { get }
 }
 
-
-protocol DataComponent: Component {
-    
-    associatedtype ReturnDara
-    
-    func returnData() -> ReturnDara
+protocol DataComponentHandler: ComponentHandler {
+    func getDataView() -> UIView
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//MARK: - test
+
+struct __ComponentInformation: Identifiable {
+    let id: Int
+    let name: String
+    let description: String
+    let icon: UIImage
+    let color: UIColor
+    let conflictedComponets: [__ComponentID]?
+    let componentType: ComponentType
+    let viewController: UIViewController
+}
+
+enum __ComponentID: Int {
+    case interval = 0
+    case description = 1
+}
+
+protocol ComponentInformationnable {
+    static var information: __ComponentInformation { get }
+}
+
+class __IntervalComponentHandler: AppearComponentHandler {
+    var shouldAppear: Bool {
+        return false
+    }
+}
+
+extension __IntervalComponentHandler: ComponentInformationnable {
+    static var information = __ComponentInformation(
+        id: 0,
+        name: "",
+        description: "",
+        icon: UIImage(),
+        color: .red,
+        conflictedComponets: [.interval, .description],
+        componentType: .appear,
+        viewController: UIViewController()
+    )
+}
+
+
+
