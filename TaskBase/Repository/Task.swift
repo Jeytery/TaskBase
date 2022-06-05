@@ -7,7 +7,3 @@
 
 import Foundation
 
-struct Task {
-    let descriptionComponent: Component
-    let components: [Component]
-}

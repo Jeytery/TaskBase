@@ -19,10 +19,6 @@ class IntervalComponentHandler {
     
     private var lastDate: Date!
     private var originalDate: Date!
-    
-    init(_ input: IntervalComponentHandlerInput) {
-        self.input = input
-    }
 }
 
 private extension IntervalComponentHandler {
@@ -41,6 +37,10 @@ extension IntervalComponentHandler: AppearComponentHandler {
     
     var outputData: String {
         return "12:00, each 3 days"
+    }
+    
+    func configureInput(_ input: IntervalComponentHandlerInput) {
+        self.input = input
     }
 }
 

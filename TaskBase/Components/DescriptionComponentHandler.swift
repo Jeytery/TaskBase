@@ -7,14 +7,14 @@
 
 import UIKit
 
-class DescriptionComponentHandler: DataComponentHandler {
-    func getDataView() -> UIView {
-        let v = UIView()
-        v.backgroundColor = .red
-        return v
-    }
-    
-    var outputData: String {
-        return "Some Component"
-    }
-}
+//class DescriptionComponentHandler: DataComponentHandler {
+//    func getDataView() -> UIView {
+//        let v = UIView()
+//        v.backgroundColor = .red
+//        return v
+//    }
+//    
+//    var outputData: String {
+//        return "Some Component"
+//    }
+//}

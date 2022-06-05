@@ -9,10 +9,10 @@ import UIKit
 import SnapKit
 
 protocol ComponentsViewContorllerDelegate: AnyObject {
-    func componenstViewController(
-        _ viewController: ComponentsViewController,
-        didChoose component: Component
-    )
+//    func componenstViewController(
+//        _ viewController: ComponentsViewController,
+//        didChoose component: Component
+//    )
 }
 
 class ComponentsViewController: UIViewController {
@@ -20,9 +20,9 @@ class ComponentsViewController: UIViewController {
     weak var delegate: ComponentsViewContorllerDelegate?
     
     private let listView = ListView(style: .insetGrouped)
-    private let components = Component.all
+    //private let components = Component.all
     
-    private var component: Component!
+    //private var component: Component!
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -55,14 +55,14 @@ private extension ComponentsViewController {
         listView.contentInset = .init(top: 20, left: 0, bottom: 0, right: 0)
         listView.allowsSelection = true
 
-        for component in components {
-            let _view = IconInfoView(
-                icon: component.information.icon,
-                color: component.information.color,
-                title: component.information.name
-            )
-            listView.addView(_view)
-        }
+//        for component in components {
+//            let _view = IconInfoView(
+//                icon: component.information.icon,
+//                color: component.information.color,
+//                title: component.information.name
+//            )
+//            listView.addView(_view)
+//        }
     }
 }
 
@@ -79,16 +79,17 @@ extension ComponentsViewController: ListViewDataSource, UITableViewDelegate {
         didSelectRowAt indexPath: IndexPath
     ) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let viewController = components[indexPath.section].information.viewController
-        navigationController?.pushViewController(viewController, animated: true)
-        viewController.delegate = self
+        //let viewController = components[indexPath.section].information.viewController
+        //navigationController?.pushViewController(viewController, animated: true)
+        //viewController.delegate = self
     }
     
     func listView(
         _ listView: ListView,
         titleForFooterInSection section: Int
     ) -> String? {
-        return components[section].information.description
+        //return components[section].information.description
+        return ""
     }
     
     func tableView(
@@ -108,7 +109,7 @@ extension ComponentsViewController: ListViewDataSource, UITableViewDelegate {
 
 extension ComponentsViewController: RightNavigationButtonable {
     func rightNavigationButtonDidTap() {
-        delegate?.componenstViewController(self, didChoose: component)
+        //delegate?.componenstViewController(self, didChoose: component)
     }
     
     func rightNavigationButtonTitle() -> String? {
@@ -117,8 +118,8 @@ extension ComponentsViewController: RightNavigationButtonable {
 }
 
 extension ComponentsViewController: ComponentViewControllerDelegate {
-    func viewController(_ viewController: UIViewController, didReturn component: Component) {
-        delegate?.componenstViewController(self, didChoose: component)
-        self.dismiss(animated: true, completion: nil)
-    }
+//    func viewController(_ viewController: UIViewController, didReturn component: Component) {
+//        delegate?.componenstViewController(self, didChoose: component)
+//        self.dismiss(animated: true, completion: nil)
+//    }
 }

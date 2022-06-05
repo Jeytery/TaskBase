@@ -12,5 +12,5 @@ protocol ComponentViewControllerable: UIViewController {
 }
 
 protocol ComponentViewControllerDelegate: AnyObject {
-    func viewController(_ viewController: UIViewController, didReturn component: Component)
+    //func viewController(_ viewController: UIViewController, didReturn component: Component)
 }

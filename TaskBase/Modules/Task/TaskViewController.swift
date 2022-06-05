@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 
 protocol TaskViewControllerDelegate: AnyObject {
-    func taskViewController(_ viewController: UIViewController, didCreate task: Task)
+    //func taskViewController(_ viewController: UIViewController, didCreate task: Task)
 }
 
 class TaskViewController: UIViewController {
@@ -19,7 +19,7 @@ class TaskViewController: UIViewController {
     
     private let tableView = UITableView(frame: .zero, style: .insetGrouped)
     
-    private var components: [Component] = []
+   // private var components: [Component] = []
     
     private let bottomButtom = UIButton()
 
@@ -53,14 +53,14 @@ private extension TaskViewController {
     }
     
     @objc func bottomButtonDidTap() {
-        let task = Task(
-            descriptionComponent: .component(
-                information: Component.description.information,
-                handler: DescriptionComponentHandler()
-            ),
-            components: components
-        )
-        delegate?.taskViewController(self, didCreate: task)
+//        let task = Task(
+//            descriptionComponent: .component(
+//                information: Component.description.information,
+//                handler: DescriptionComponentHandler()
+//            ),
+//            components: components
+//        )
+        //delegate?.taskViewController(self, didCreate: task)
     }
     
     func configureViewController() {
@@ -109,18 +109,19 @@ extension TaskViewController: UITableViewDelegate, UITableViewDataSource {
             for: indexPath
         ) as! ViewableTableViewCell<IconInfoView>
         
-        let component = components[indexPath.row]
-        cell.baseView.configure(
-            icon: component.information.icon,
-            color: component.information.color,
-            title: component.information.name
-        )
-        cell.baseView.showSubtitle(component.information.description)
-        return cell
+//        //let component = components[indexPath.row]
+//        cell.baseView.configure(
+//            icon: component.information.icon,
+//            color: component.information.color,
+//            title: component.information.name
+//        )
+//        cell.baseView.showSubtitle(component.information.description)
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return components.count
+        //return components.count
+        return 0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -129,8 +130,8 @@ extension TaskViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension TaskViewController: ComponentsViewContorllerDelegate {
-    func componenstViewController(_ viewController: ComponentsViewController, didChoose component: Component) {
-        components.append(component)
-        tableView.reloadData()
-    }
+//    func componenstViewController(_ viewController: ComponentsViewController, didChoose component: Component) {
+//        //components.append(component)
+//        tableView.reloadData()
+//    }
 }

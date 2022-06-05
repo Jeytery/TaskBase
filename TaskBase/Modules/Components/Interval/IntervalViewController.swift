@@ -8,10 +8,10 @@
 import UIKit
 
 protocol IntervalViewControllerDelegate: AnyObject {
-    func intervalViewController(
-        _ viewController: IntervalViewController,
-        didReturn intervalComponent: Component
-    )
+//    func intervalViewController(
+//        _ viewController: IntervalViewController,
+//        didReturn intervalComponent: Component
+//    )
 }
 
 class IntervalViewController: UIViewController, ComponentViewControllerable {
@@ -81,14 +81,14 @@ extension IntervalViewController: RightNavigationButtonable {
             interval: 0,
             time: Date()
         )
-        let handler = IntervalComponentHandler(input)
-        delegate?.viewController(
-            self,
-            didReturn: .component(
-                information: Component.interval.information,
-                handler: handler
-            )
-        )
+        //let handler = IntervalComponentHandler(input)
+//        delegate?.viewController(
+//            self,
+//            didReturn: .component(
+//                information: Component.interval.information,
+//                handler: handler
+//            )
+//        )
     }
     
     func rightNavigationButtonTitle() -> String? {

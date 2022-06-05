@@ -12,7 +12,7 @@ class TasksViewController: UIViewController {
 
     private let tableView = UITableView(frame: .zero, style: .insetGrouped)
     
-    private var tasks: [Task] = []
+    //private var tasks: [Task] = []
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -46,7 +46,8 @@ private extension TasksViewController {
 
 extension TasksViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tasks.count
+        //return tasks.count
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -54,14 +55,14 @@ extension TasksViewController: UITableViewDelegate, UITableViewDataSource {
             withIdentifier: "cell",
             for: indexPath
         ) as! ViewableTableViewCell<IconInfoView>
-        let task = tasks[indexPath.row]
-        let descDataComp = task.descriptionComponent
-        cell.baseView.configure(
-            icon: UIImage(systemName: "scribble.variable")!,
-            color: .systemBlue,
-            title: descDataComp.handler.outputData
-        )
-        return cell
+//        let task = tasks[indexPath.row]
+//        let descDataComp = task.descriptionComponent
+//        cell.baseView.configure(
+//            icon: UIImage(systemName: "scribble.variable")!,
+//            color: .systemBlue,
+//            title: descDataComp.handler.outputData
+//        )
+        return UITableViewCell()
     }
 }
 
@@ -82,9 +83,9 @@ extension TasksViewController: RightNavigationButtonable {
 }
 
 extension TasksViewController: TaskViewControllerDelegate {
-    func taskViewController(_ viewController: UIViewController, didCreate task: Task) {
-        viewController.dismiss(animated: true, completion: nil)
-        tasks.append(task)
-        tableView.reloadData()
-    }
+//    func taskViewController(_ viewController: UIViewController, didCreate task: Task) {
+//        viewController.dismiss(animated: true, completion: nil)
+//        tasks.append(task)
+//        tableView.reloadData()
+//    }
 }

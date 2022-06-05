@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
         
-        let vc = TabViewController()
+        let vc = __TasksViewController()
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = vc
