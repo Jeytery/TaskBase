@@ -340,6 +340,8 @@ func Component(by id: Int) -> NoinputComponenet? {
     switch id {
     case 0:
         return IntervalComponent()
+    case 1:
+        return DescriptionComponent()
     default:
         return nil
     }

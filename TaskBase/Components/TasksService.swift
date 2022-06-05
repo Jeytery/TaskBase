@@ -39,6 +39,7 @@ class TasksService {
             print("DATA from BASE_TASKS is nil")
             return
         }
+        
         UserDefaults.standard.set(data, forKey: "tasks.key")
     }
     
@@ -68,6 +69,8 @@ class TasksService {
             let components: [Componentable] = $0.components.compactMap {
                 return Component(by: $0.id, input: $0.input)
             }
+            print("--------")
+            print(components)
             return .init(components: components)
         }
     }
