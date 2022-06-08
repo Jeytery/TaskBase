@@ -35,6 +35,23 @@ class TasksViewController: UIViewController {
     
     private func fetchData() {
         let tasksService = TasksService()
+        tasksService.clear()
+        
+        let desc = DescriptionComponent()
+        let descInput = DesriptionInput(name: "test222", description: "test_desc").archive()
+        desc.input = descInput
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        let date = dateFormatter.date(from: "2015-04-01T11:42:00")!
+        
+        let interval = IntervalComponent()
+        let input = IntervalComponentHandlerInput(interval: 7, time: date).archive()
+        interval.input = input
+        
+        let task = Task(components: [interval, desc])
+        
+        tasksService.saveTasksToDevice([task])
         self.tasks = tasksService.getTasks()
         tableView.reloadData()
     }

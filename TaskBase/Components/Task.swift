@@ -37,10 +37,13 @@ struct Task {
     
     var shouldAppear: Bool {
         for component in components {
-            guard let handler = component.handler as? AppearComponentHandler else {
+            guard
+                let handler = component.handler as? AppearComponentHandler,
+                let data = component.input
+            else {
                 continue
             }
-            if handler.shouldAppear {
+            if handler.shouldAppear(data: data) {
                 return true
             }
         }
@@ -50,10 +53,14 @@ struct Task {
     var componentViews: [UIView] {
         var views: [UIView] = []
         for component in components {
-            guard let handler = component.handler as? ViewComponentHandler else {
+            guard
+                let handler = component.handler as? ViewComponentHandler,
+                let data = component.input
+            else {
                 continue
             }
-            views.append(handler.view)
+            let view = handler.view(data: data)
+            views.append(view)
         }
         return views
     }

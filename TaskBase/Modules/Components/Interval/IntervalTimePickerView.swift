@@ -37,6 +37,11 @@ class IntervalTimePickerView: UIView {
     required init?(coder: NSCoder) {
         fatalError()
     }
+    
+    func setTime(minutes: Int, hours: Int) {
+        hoursPicker.selectRow(hours, inComponent: 0, animated: false)
+        minutesPicker.selectRow(minutes, inComponent: 0, animated: false)
+    }
 }
 
 private extension IntervalTimePickerView {

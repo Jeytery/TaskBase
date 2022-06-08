@@ -14,6 +14,8 @@ class TasksService {
         let components: [ComponentBaseInformation]
     }
     
+    private let key = "tasks.key"
+    
     private struct ComponentBaseInformation: Codable {
         let id: Int
         let input: Data
@@ -40,7 +42,7 @@ class TasksService {
             return
         }
         
-        UserDefaults.standard.set(data, forKey: "tasks.key")
+        UserDefaults.standard.set(data, forKey: key)
     }
     
     func saveTask(_ task: Task) {
@@ -69,9 +71,11 @@ class TasksService {
             let components: [Componentable] = $0.components.compactMap {
                 return Component(by: $0.id, input: $0.input)
             }
-            print("--------")
-            print(components)
             return .init(components: components)
         }
+    }
+    
+    func clear() {
+        UserDefaults.standard.removeObject(forKey: key)
     }
 }

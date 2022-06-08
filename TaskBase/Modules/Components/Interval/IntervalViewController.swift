@@ -81,7 +81,6 @@ extension IntervalViewController: RightNavigationButtonable {
             time: Date()
         )
         
-        
         let component = IntervalComponent()
         component.input = input.archive()
         
@@ -94,5 +93,25 @@ extension IntervalViewController: RightNavigationButtonable {
 }
 
 extension IntervalViewController: ComponentViewControllable {
-    func configure(data: Data) {}
+    private func getMinutes(date: Date) -> Int {
+        let calendar = NSCalendar.current
+        let components = calendar.dateComponents([.minute], from: date)
+        return components.hour ?? 0
+    }
+    
+    private func getHours(date: Date) -> Int {
+        let calendar = NSCalendar.current
+        let components = calendar.dateComponents([.hour], from: date)
+        return components.hour ?? 0
+    }
+    
+    func configure(data: Data) {
+        let input = IntervalComponentHandlerInput.unarchive(data: data)
+        timeLogicView.setInterval(input.interval)
+        let date = input.time
+        timeIntervalView.setTime(
+            minutes: getMinutes(date: date),
+            hours: getHours(date: date)
+        )
+    }
 }

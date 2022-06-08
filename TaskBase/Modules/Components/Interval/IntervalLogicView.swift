@@ -44,6 +44,14 @@ class IntervalLogicView: UIView {
     required init?(coder: NSCoder) {
         fatalError()
     }
+    
+    func setInterval(_ interval: Int) {
+        var _interval = interval
+        if interval > 7 {
+            _interval = 8
+        }
+        pickerView.selectRow(_interval - 1, inComponent: 0, animated: false)
+    }
 }
 
 extension IntervalLogicView: UIPickerViewDelegate, UIPickerViewDataSource {

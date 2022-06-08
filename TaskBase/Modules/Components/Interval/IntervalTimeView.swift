@@ -42,4 +42,8 @@ class TimeIntervalView: UIView {
     var height: CGFloat {
         return 100
     }
+    
+    func setTime(minutes: Int, hours: Int) {
+        timePickerView.setTime(minutes: minutes, hours: hours)
+    }
 }
