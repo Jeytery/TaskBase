@@ -20,14 +20,18 @@
 		3E4BF9632835864400A6F24F /* RepeaterLogicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4BF9622835864400A6F24F /* RepeaterLogicViewController.swift */; };
 		3E4BF99B2836DDD700A6F24F /* IconInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4BF99A2836DDD700A6F24F /* IconInfoView.swift */; };
 		3E4BF99D2836E3F300A6F24F /* RepeaterTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4BF99C2836E3F300A6F24F /* RepeaterTimeViewController.swift */; };
+		3E7F8A46284E9F3700AC4BC0 /* TaskNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F8A45284E9F3700AC4BC0 /* TaskNavigation.swift */; };
 		3E8F688A2843833500120B75 /* IntervalTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8F68892843833500120B75 /* IntervalTimeView.swift */; };
 		3E8F688C2843834600120B75 /* IntervalTimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8F688B2843834600120B75 /* IntervalTimePickerView.swift */; };
 		3E8F688E2843834D00120B75 /* IntervalLogicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8F688D2843834D00120B75 /* IntervalLogicView.swift */; };
 		3E8F689028439FE300120B75 /* __IntervalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8F688F28439FE300120B75 /* __IntervalViewController.swift */; };
 		3E8F68932843BFB400120B75 /* ComponentViewControllerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8F68922843BFB400120B75 /* ComponentViewControllerable.swift */; };
 		3E8F68962843C36E00120B75 /* ViewableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8F68952843C36E00120B75 /* ViewableTableViewCell.swift */; };
-		3E8F68982843C97C00120B75 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8F68972843C97C00120B75 /* Task.swift */; };
 		3E8F689A2843CCCB00120B75 /* DescriptionComponentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8F68992843CCCB00120B75 /* DescriptionComponentHandler.swift */; };
+		3EA2A6FD2851286300E9C5B6 /* IntervalComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA2A6FC2851286300E9C5B6 /* IntervalComponent.swift */; };
+		3EA2A6FF2851286A00E9C5B6 /* DescriptionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA2A6FE2851286A00E9C5B6 /* DescriptionComponent.swift */; };
+		3EA2A701285128B000E9C5B6 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA2A700285128B000E9C5B6 /* Task.swift */; };
+		3EA2A703285128FF00E9C5B6 /* ComponentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA2A702285128FF00E9C5B6 /* ComponentHandler.swift */; };
 		3EC74EAA284CC7A500A2F949 /* TasksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC74EA9284CC7A500A2F949 /* TasksService.swift */; };
 		3EC74ECC284CE2B200A2F949 /* Archivable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC74ECB284CE2B200A2F949 /* Archivable.swift */; };
 		3EEDD804282AD3820065D589 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEDD803282AD3820065D589 /* TaskViewController.swift */; };
@@ -59,14 +63,18 @@
 		3E4BF9622835864400A6F24F /* RepeaterLogicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeaterLogicViewController.swift; sourceTree = "<group>"; };
 		3E4BF99A2836DDD700A6F24F /* IconInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconInfoView.swift; sourceTree = "<group>"; };
 		3E4BF99C2836E3F300A6F24F /* RepeaterTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeaterTimeViewController.swift; sourceTree = "<group>"; };
+		3E7F8A45284E9F3700AC4BC0 /* TaskNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskNavigation.swift; sourceTree = "<group>"; };
 		3E8F68892843833500120B75 /* IntervalTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalTimeView.swift; sourceTree = "<group>"; };
 		3E8F688B2843834600120B75 /* IntervalTimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalTimePickerView.swift; sourceTree = "<group>"; };
 		3E8F688D2843834D00120B75 /* IntervalLogicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalLogicView.swift; sourceTree = "<group>"; };
 		3E8F688F28439FE300120B75 /* __IntervalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = __IntervalViewController.swift; sourceTree = "<group>"; };
 		3E8F68922843BFB400120B75 /* ComponentViewControllerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentViewControllerable.swift; sourceTree = "<group>"; };
 		3E8F68952843C36E00120B75 /* ViewableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewableTableViewCell.swift; sourceTree = "<group>"; };
-		3E8F68972843C97C00120B75 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		3E8F68992843CCCB00120B75 /* DescriptionComponentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionComponentHandler.swift; sourceTree = "<group>"; };
+		3EA2A6FC2851286300E9C5B6 /* IntervalComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalComponent.swift; sourceTree = "<group>"; };
+		3EA2A6FE2851286A00E9C5B6 /* DescriptionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DescriptionComponent.swift; path = TaskBase/Components/Interval/DescriptionComponent.swift; sourceTree = SOURCE_ROOT; };
+		3EA2A700285128B000E9C5B6 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		3EA2A702285128FF00E9C5B6 /* ComponentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentHandler.swift; sourceTree = "<group>"; };
 		3EC74EA9284CC7A500A2F949 /* TasksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksService.swift; sourceTree = "<group>"; };
 		3EC74ECB284CE2B200A2F949 /* Archivable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archivable.swift; sourceTree = "<group>"; };
 		3EEDD803282AD3820065D589 /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
@@ -130,7 +138,7 @@
 		3E4490422828298600190FE2 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				3E8F68972843C97C00120B75 /* Task.swift */,
+				3EC74EA9284CC7A500A2F949 /* TasksService.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -147,10 +155,11 @@
 		3E46A5152839680A005371EF /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				3EA2A6FB2851283A00E9C5B6 /* Description */,
+				3EA2A6F92851282E00E9C5B6 /* Interval */,
 				3E46A51628396817005371EF /* Component.swift */,
-				3E46A51A283A43E2005371EF /* IntervalComponentHandler.swift */,
-				3E8F68992843CCCB00120B75 /* DescriptionComponentHandler.swift */,
-				3EC74EA9284CC7A500A2F949 /* TasksService.swift */,
+				3EA2A702285128FF00E9C5B6 /* ComponentHandler.swift */,
+				3EA2A700285128B000E9C5B6 /* Task.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -180,7 +189,9 @@
 		3E8F68912843BEAA00120B75 /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
+				3EEDD803282AD3820065D589 /* TaskViewController.swift */,
 				3EEDD805282AD3900065D589 /* TasksViewController.swift */,
+				3E7F8A45284E9F3700AC4BC0 /* TaskNavigation.swift */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -191,6 +202,24 @@
 				3E8F68952843C36E00120B75 /* ViewableTableViewCell.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		3EA2A6F92851282E00E9C5B6 /* Interval */ = {
+			isa = PBXGroup;
+			children = (
+				3E46A51A283A43E2005371EF /* IntervalComponentHandler.swift */,
+				3EA2A6FC2851286300E9C5B6 /* IntervalComponent.swift */,
+			);
+			path = Interval;
+			sourceTree = "<group>";
+		};
+		3EA2A6FB2851283A00E9C5B6 /* Description */ = {
+			isa = PBXGroup;
+			children = (
+				3E8F68992843CCCB00120B75 /* DescriptionComponentHandler.swift */,
+				3EA2A6FE2851286A00E9C5B6 /* DescriptionComponent.swift */,
+			);
+			path = Description;
 			sourceTree = "<group>";
 		};
 		3EEDD80D282ADCE50065D589 /* UserInterface */ = {
@@ -222,7 +251,6 @@
 				3EEDD807282AD3E70065D589 /* TabViewController.swift */,
 				3E8F68912843BEAA00120B75 /* Tasks */,
 				3EEDD814282ADD3F0065D589 /* Distribution */,
-				3EEDD813282ADD340065D589 /* Task */,
 				3EEDD812282ADD2D0065D589 /* Components */,
 			);
 			path = Modules;
@@ -238,14 +266,6 @@
 				3E8F68922843BFB400120B75 /* ComponentViewControllerable.swift */,
 			);
 			path = Components;
-			sourceTree = "<group>";
-		};
-		3EEDD813282ADD340065D589 /* Task */ = {
-			isa = PBXGroup;
-			children = (
-				3EEDD803282AD3820065D589 /* TaskViewController.swift */,
-			);
-			path = Task;
 			sourceTree = "<group>";
 		};
 		3EEDD814282ADD3F0065D589 /* Distribution */ = {
@@ -347,24 +367,27 @@
 				3E44902A282824C900190FE2 /* AppDelegate.swift in Sources */,
 				3EC74EAA284CC7A500A2F949 /* TasksService.swift in Sources */,
 				3E46A51B283A43E2005371EF /* IntervalComponentHandler.swift in Sources */,
+				3EA2A703285128FF00E9C5B6 /* ComponentHandler.swift in Sources */,
 				3EEDD828282C40D40065D589 /* Colors.swift in Sources */,
 				3EEDD806282AD3900065D589 /* TasksViewController.swift in Sources */,
 				3EEDD808282AD3E70065D589 /* TabViewController.swift in Sources */,
 				3E8F689A2843CCCB00120B75 /* DescriptionComponentHandler.swift in Sources */,
 				3E46A51428393DAD005371EF /* NavigationButtonable.swift in Sources */,
 				3EEDD80C282AD61F0065D589 /* DistributorViewController.swift in Sources */,
+				3EA2A701285128B000E9C5B6 /* Task.swift in Sources */,
 				3E8F688E2843834D00120B75 /* IntervalLogicView.swift in Sources */,
 				3E46A524283A8B8E005371EF /* TimeViewController.swift in Sources */,
 				3E8F688C2843834600120B75 /* IntervalTimePickerView.swift in Sources */,
+				3E7F8A46284E9F3700AC4BC0 /* TaskNavigation.swift in Sources */,
 				3E8F68932843BFB400120B75 /* ComponentViewControllerable.swift in Sources */,
 				3E8F68962843C36E00120B75 /* ViewableTableViewCell.swift in Sources */,
 				3EEDD82F282C45550065D589 /* Luma.swift in Sources */,
 				3EEDD804282AD3820065D589 /* TaskViewController.swift in Sources */,
+				3EA2A6FD2851286300E9C5B6 /* IntervalComponent.swift in Sources */,
 				3EEDD826282C40930065D589 /* CircleView.swift in Sources */,
 				3EEDD811282ADD2B0065D589 /* ComponentsViewController.swift in Sources */,
 				3EEDD82A282C40D80065D589 /* Design.swift in Sources */,
 				3E4BF99D2836E3F300A6F24F /* RepeaterTimeViewController.swift in Sources */,
-				3E8F68982843C97C00120B75 /* Task.swift in Sources */,
 				3E46A51728396817005371EF /* Component.swift in Sources */,
 				3E4BF9632835864400A6F24F /* RepeaterLogicViewController.swift in Sources */,
 				3EEDD80A282AD6120065D589 /* SettingsViewController.swift in Sources */,
@@ -372,6 +395,7 @@
 				3EC74ECC284CE2B200A2F949 /* Archivable.swift in Sources */,
 				3E3B30D32834227100C86763 /* RepeaterViewController.swift in Sources */,
 				3EEDD816282ADFF00065D589 /* ListView.swift in Sources */,
+				3EA2A6FF2851286A00E9C5B6 /* DescriptionComponent.swift in Sources */,
 				3E8F689028439FE300120B75 /* __IntervalViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,20 +10,20 @@ import UIKit
 import SnapKit
 
 protocol TaskViewControllerDelegate: AnyObject {
-    //func taskViewController(_ viewController: UIViewController, didCreate task: Task)
+    func taskViewController(_ viewController: UIViewController, didReturn task: Task)
 }
 
 class TaskViewController: UIViewController {
     
     weak var delegate: TaskViewControllerDelegate?
     
+    private var task: Task
+    
     private let tableView = UITableView(frame: .zero, style: .insetGrouped)
-    
-   // private var components: [Component] = []
-    
     private let bottomButtom = UIButton()
 
-    init() {
+    init(task: Task? = nil) {
+        self.task = task ?? .empty
         super.init(nibName: nil, bundle: nil)
         configureViewController()
         configureTableView()
@@ -52,16 +52,7 @@ private extension TaskViewController {
         bottomButtom.addTarget(self, action: #selector(bottomButtonDidTap), for: .touchUpInside)
     }
     
-    @objc func bottomButtonDidTap() {
-//        let task = Task(
-//            descriptionComponent: .component(
-//                information: Component.description.information,
-//                handler: DescriptionComponentHandler()
-//            ),
-//            components: components
-//        )
-        //delegate?.taskViewController(self, didCreate: task)
-    }
+    @objc func bottomButtonDidTap() {}
     
     func configureViewController() {
         view.backgroundColor = .systemBackground
@@ -103,29 +94,52 @@ extension TaskViewController: LeftNavigationButtonable {
 }
 
 extension TaskViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int
+    ) -> Int {
+        return task.components.count
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: "cell",
             for: indexPath
         ) as! ViewableTableViewCell<IconInfoView>
         
-//        //let component = components[indexPath.row]
-//        cell.baseView.configure(
-//            icon: component.information.icon,
-//            color: component.information.color,
-//            title: component.information.name
-//        )
-//        cell.baseView.showSubtitle(component.information.description)
+        let component = task.components[indexPath.row]
+        
+        cell.baseView.configure(
+            icon: component.information.icon,
+            color: component.information.color,
+            title: component.information.name
+        )
+        cell.baseView.showSubtitle(component.outputData)
         return UITableViewCell()
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return components.count
-        return 0
+
+    func tableView(
+        _ tableView: UITableView,
+        heightForRowAt indexPath: IndexPath
+    ) -> CGFloat {
+        return 70
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+    func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
+    ) {
+        let component = task.components[indexPath.row]
+        let vc = component.viewController
+        
+        navigationController?.pushViewController(vc, animated: true)
+        
+        if let data = component.input {
+            vc.configure(data: data)
+        }
     }
 }
 

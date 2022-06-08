@@ -95,3 +95,7 @@ extension IntervalViewController: RightNavigationButtonable {
         return "done"
     }
 }
+
+extension IntervalViewController: ComponentViewControllable {
+    func configure(data: Data) {}
+}

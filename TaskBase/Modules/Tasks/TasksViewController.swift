@@ -8,9 +8,16 @@
 import UIKit
 import SnapKit
 
+protocol TasksViewControllerDelegate: AnyObject {
+    func tasksViewController(_ viewController: TasksViewController, didChoose task: Task)
+}
+
 class TasksViewController: UIViewController {
 
+    weak var delegate: TasksViewControllerDelegate?
+    
     private let tableView = UITableView(frame: .zero, style: .insetGrouped)
+    
     private var tasks: [Task] = []
 
     init() {
@@ -18,30 +25,18 @@ class TasksViewController: UIViewController {
         configureViewController()
         configureTableView()
         configureRightNavigationButton()
-        
-//        let interval = IntervalComponent()
-//        let desc = DescriptionComponent()
-//
-//        interval.input = Data()
-//        desc.input = DesriptionInput(name: "Уборка", description: "ДЖ").archive()
-//
-//        let desc2 = DescriptionComponent()
-//        desc2.input = DesriptionInput(name: "Спорт", description: "Jeytery").archive()
-//
-//        let components: [Componentable] = [interval, desc]
-//
-//        let task1 = Task(components: components)
-//        let task2 = Task(components: [interval, desc2])
 
-        let tasksService = TasksService()
-//        tasksService.saveTasksToDevice([task1, task2])
-        
-        self.tasks = tasksService.getTasks()
-        tableView.reloadData()
+        fetchData()
     }
     
     required init?(coder: NSCoder) {
         fatalError()
+    }
+    
+    private func fetchData() {
+        let tasksService = TasksService()
+        self.tasks = tasksService.getTasks()
+        tableView.reloadData()
     }
 }
 
@@ -59,7 +54,10 @@ private extension TasksViewController {
         }
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(ViewableTableViewCell<IconInfoView>.self, forCellReuseIdentifier: "cell")
+        tableView.register(
+            ViewableTableViewCell<IconInfoView>.self,
+            forCellReuseIdentifier: "cell"
+        )
     }
 }
 
@@ -93,6 +91,14 @@ extension TasksViewController: UITableViewDelegate, UITableViewDataSource {
             cell.baseView.showSubtitle(input.description)
         }
         return cell
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
+    ) {
+        let task = tasks[indexPath.row]
+        delegate?.tasksViewController(self, didChoose: task)
     }
 }
 
