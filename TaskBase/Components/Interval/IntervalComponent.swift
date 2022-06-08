@@ -31,7 +31,8 @@ class IntervalComponent: Componentable {
     var input: Data?
     
     var outputData: String {
-        return ""
+        // some string based on data
+        return "interval component"
     }
     
     var viewController: UIViewController & ComponentViewControllable {

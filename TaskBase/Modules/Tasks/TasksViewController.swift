@@ -43,7 +43,11 @@ class TasksViewController: UIViewController {
 private extension TasksViewController {
     func configureViewController() {
         view.backgroundColor = .systemBackground
-        tabBarItem = .init(title: nil, image: UIImage(systemName: "circle.grid.2x2.fill"), tag: 0)
+        tabBarItem = .init(
+            title: nil,
+            image: UIImage(systemName: "circle.grid.2x2.fill"),
+            tag: 0
+        )
         title = "Tasks"
     }
     

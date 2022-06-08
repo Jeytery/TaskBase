@@ -8,15 +8,15 @@
 import UIKit
 
 protocol IntervalViewControllerDelegate: AnyObject {
-//    func intervalViewController(
-//        _ viewController: IntervalViewController,
-//        didReturn intervalComponent: Component
-//    )
+    func intervalViewController(
+        _ viewController: IntervalViewController,
+        didReturn intervalComponent: Componentable
+    )
 }
 
-class IntervalViewController: UIViewController, ComponentViewControllerable {
-    
-    weak var delegate: ComponentViewControllerDelegate?
+class IntervalViewController: UIViewController {
+
+    weak var delegate: IntervalViewControllerDelegate?
     
     private let listView = ListView(style: .insetGrouped)
     
@@ -66,7 +66,6 @@ extension IntervalViewController: ListViewDataSource, UITableViewDelegate {
     }
     
     func listView(_ listView: ListView, titleForHeaderInSection section: Int) -> String? {
-        
         return " "
     }
     
@@ -81,14 +80,12 @@ extension IntervalViewController: RightNavigationButtonable {
             interval: 0,
             time: Date()
         )
-        //let handler = IntervalComponentHandler(input)
-//        delegate?.viewController(
-//            self,
-//            didReturn: .component(
-//                information: Component.interval.information,
-//                handler: handler
-//            )
-//        )
+        
+        
+        let component = IntervalComponent()
+        component.input = input.archive()
+        
+        delegate?.intervalViewController(self, didReturn: IntervalComponent())
     }
     
     func rightNavigationButtonTitle() -> String? {

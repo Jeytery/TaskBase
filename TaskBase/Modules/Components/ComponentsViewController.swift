@@ -117,7 +117,7 @@ extension ComponentsViewController: RightNavigationButtonable {
     }
 }
 
-extension ComponentsViewController: ComponentViewControllerDelegate {
+extension ComponentsViewController {
 //    func viewController(_ viewController: UIViewController, didReturn component: Component) {
 //        delegate?.componenstViewController(self, didChoose: component)
 //        self.dismiss(animated: true, completion: nil)

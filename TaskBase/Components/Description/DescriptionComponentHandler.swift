@@ -8,7 +8,7 @@
 import UIKit
 
 class DescriptionComponentHandler: ViewComponentHandler {
-    var view: UIView {
+    func view(data: Data) -> UIView {
         let view = UIView()
         view.backgroundColor = .red
         return view

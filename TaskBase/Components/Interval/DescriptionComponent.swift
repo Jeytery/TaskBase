@@ -13,6 +13,9 @@ struct DesriptionInput: Codable, Archivable {
 }
 
 class DescriptionComponent: Componentable {
+    
+    var input: Data?
+    
     var information: ComponentInformation {
         return .init(
             name: "Description",
@@ -30,8 +33,6 @@ class DescriptionComponent: Componentable {
     var handler: ComponentHandler {
         return DescriptionComponentHandler()
     }
-    
-    var input: Data?
     
     var outputData: String {
         return "description"

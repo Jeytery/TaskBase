@@ -118,7 +118,7 @@ extension TaskViewController: UITableViewDelegate, UITableViewDataSource {
             title: component.information.name
         )
         cell.baseView.showSubtitle(component.outputData)
-        return UITableViewCell()
+        return cell
     }
 
     func tableView(

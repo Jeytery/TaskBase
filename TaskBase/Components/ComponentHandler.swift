@@ -11,9 +11,9 @@ import UIKit
 protocol ComponentHandler {}
 
 protocol AppearComponentHandler: ComponentHandler {
-    var shouldAppear: Bool { get }
+    func shouldAppear(data: Data) -> Bool
 }
 
 protocol ViewComponentHandler: ComponentHandler {
-    var view: UIView { get }
+    func view(data: Data) -> UIView
 }

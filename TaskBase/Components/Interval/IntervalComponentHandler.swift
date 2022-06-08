@@ -8,14 +8,14 @@
 import Foundation
 import UIKit
 
-struct IntervalComponentHandlerInput {
+struct IntervalComponentHandlerInput: Archivable {
     let interval: Int
     let time: Date
 }
 
 class IntervalComponentHandler {
     
-    private var input: IntervalComponentHandlerInput!
+    var input: Data?
     
     private var lastDate: Date!
     private var originalDate: Date!
@@ -28,19 +28,12 @@ private extension IntervalComponentHandler {
 }
 
 extension IntervalComponentHandler: AppearComponentHandler {
-    var shouldAppear: Bool {
-        let today = Date()
-        let interval = input.interval
-        storeLastDate(today)
+    func shouldAppear(data: Data) -> Bool {
         return false
     }
     
     var outputData: String {
         return "12:00, each 3 days"
-    }
-    
-    func configureInput(_ input: IntervalComponentHandlerInput) {
-        self.input = input
     }
 }
 
