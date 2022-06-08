@@ -29,8 +29,10 @@ extension TaskNavigation: TasksViewControllerDelegate {
         didChoose task: Task
     ) {
         let vc = TaskViewController(task: task)
+        let nvc = UINavigationController(rootViewController: vc)
+        nvc.navigationBar.prefersLargeTitles = true
         present(
-            UINavigationController(rootViewController: vc),
+            nvc,
             animated: true,
             completion: nil
         )

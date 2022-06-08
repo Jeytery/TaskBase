@@ -25,7 +25,7 @@ class IntervalLogicView: UIView {
     
     init() {
         super.init(frame: .zero)
-        backgroundColor = .tertiarySystemFill
+        backgroundColor = .systemBackground
         
         pickerView.delegate = self
         pickerView.dataSource = self
@@ -37,8 +37,6 @@ class IntervalLogicView: UIView {
             $0.top.left.equalToSuperview().offset(10)
             $0.right.bottom.equalToSuperview().offset(-10)
         }
-    
-        backgroundColor = .white
     }
     
     required init?(coder: NSCoder) {
@@ -50,20 +48,33 @@ class IntervalLogicView: UIView {
         if interval > 7 {
             _interval = 8
         }
-        pickerView.selectRow(_interval - 1, inComponent: 0, animated: false)
+        pickerView.selectRow(
+            _interval - 1,
+            inComponent: 0,
+            animated: false
+        )
     }
 }
 
 extension IntervalLogicView: UIPickerViewDelegate, UIPickerViewDataSource {
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(
+        _ pickerView: UIPickerView,
+        numberOfRowsInComponent component: Int
+    ) -> Int {
         return titles.count
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(
+        _ pickerView: UIPickerView,
+        titleForRow row: Int,
+        forComponent component: Int
+    ) -> String? {
         return titles[row]
     }
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    func numberOfComponents(
+        in pickerView: UIPickerView
+    ) -> Int {
         return 1
     }
 }

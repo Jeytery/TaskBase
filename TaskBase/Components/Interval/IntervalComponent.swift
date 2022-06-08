@@ -31,8 +31,9 @@ class IntervalComponent: Componentable {
     var input: Data?
     
     var outputData: String {
-        // some string based on data
-        return "interval component"
+        guard let data = input else { return "Undefined..." }
+        let _input = IntervalComponentHandlerInput.unarchive(data: data)
+        return "\(_input.timeStruct.hours):\(_input.timeStruct.minutes), interval: \(_input.interval)"
     }
     
     var viewController: UIViewController & ComponentViewControllable {

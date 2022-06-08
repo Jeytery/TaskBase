@@ -29,8 +29,33 @@ class TaskViewController: UIViewController {
         configureTableView()
       
         configureLeftNavigationButton()
-        configureRightNavigationButton()
         configureBottomButton()
+        
+        let editImage = UIImage(systemName: "plus")!
+        let searchImage = UIImage(systemName: "square.and.pencil")!
+
+        let editButton = UIBarButtonItem(
+            image: editImage,
+            style: .plain,
+            target: self,
+            action: #selector(didTapEditButton)
+        )
+        
+        let searchButton = UIBarButtonItem(
+            image: searchImage,
+            style: .plain,
+            target: self,
+            action: #selector(didTapSearchButton)
+        )
+        navigationItem.rightBarButtonItems = [editButton, searchButton]
+    }
+    
+    @objc func didTapEditButton() {
+        
+    }
+
+    @objc func didTapSearchButton() {
+        
     }
     
     required init?(coder: NSCoder) {
