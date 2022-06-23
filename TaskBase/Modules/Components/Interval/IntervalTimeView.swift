@@ -24,14 +24,13 @@ class TimeIntervalView: UIView {
         addSubview(timeInfoView)
         addSubview(timePickerView)
         
-        timeInfoView.snp.makeConstraints() {
-            $0.top.left.right.equalToSuperview()
-            $0.height.equalToSuperview().dividedBy(3.3)
-        }
+//        timeInfoView.snp.makeConstraints() {
+//            $0.top.left.right.equalToSuperview()
+//            $0.height.equalToSuperview().dividedBy(4)
+//        }
         
         timePickerView.snp.makeConstraints() {
-            $0.left.right.bottom.equalToSuperview()
-            $0.top.equalTo(timeInfoView.snp.bottom)
+            $0.edges.equalToSuperview()
         }
     }
     

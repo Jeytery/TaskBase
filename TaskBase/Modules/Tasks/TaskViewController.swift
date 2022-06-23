@@ -5,9 +5,9 @@
 //  Created by Jeytery on 10.05.2022.
 //
 
-import Foundation
 import UIKit
 import SnapKit
+import SPDiffable
 
 protocol TaskViewControllerDelegate: AnyObject {
     func taskViewController(_ viewController: UIViewController, didReturn task: Task)
@@ -27,55 +27,36 @@ class TaskViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         configureViewController()
         configureTableView()
-      
         configureLeftNavigationButton()
-        configureBottomButton()
-        
-        let editImage = UIImage(systemName: "plus")!
-        let searchImage = UIImage(systemName: "square.and.pencil")!
-
-        let editButton = UIBarButtonItem(
-            image: editImage,
-            style: .plain,
-            target: self,
-            action: #selector(didTapEditButton)
-        )
-        
-        let searchButton = UIBarButtonItem(
-            image: searchImage,
-            style: .plain,
-            target: self,
-            action: #selector(didTapSearchButton)
-        )
-        navigationItem.rightBarButtonItems = [editButton, searchButton]
-    }
-    
-    @objc func didTapEditButton() {
-        
+        configureTabButtons()
     }
 
-    @objc func didTapSearchButton() {
-        
-    }
-    
     required init?(coder: NSCoder) {
         fatalError()
     }
 }
 
 private extension TaskViewController {
-    func configureBottomButton() {
-        view.addSubview(bottomButtom)
-        bottomButtom.snp.makeConstraints() {
-            $0.centerX.equalToSuperview()
-            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-            $0.width.equalToSuperview().dividedBy(2)
-            $0.height.equalTo(50)
-        }
-        bottomButtom.setTitle("add", for: .normal)
-        bottomButtom.backgroundColor = .black
-        bottomButtom.addTarget(self, action: #selector(bottomButtonDidTap), for: .touchUpInside)
+    func configureTabButtons() {
+        let plusImage = UIImage(systemName: "plus")!
+        let plusButton = UIBarButtonItem(
+            image: plusImage,
+            style: .plain,
+            target: self,
+            action: #selector(didTapEditButton)
+        )
+        
+        let doneButton = UIBarButtonItem(
+            barButtonSystemItem: .done,
+            target: self,
+            action: #selector(didTapSearchButton)
+        )
+        navigationItem.rightBarButtonItems = [doneButton, plusButton]
     }
+    
+    @objc func didTapEditButton() {}
+    
+    @objc func didTapSearchButton() {}
     
     @objc func bottomButtonDidTap() {}
     
@@ -102,7 +83,6 @@ extension TaskViewController: RightNavigationButtonable {
     
     func rightNavigationButtonDidTap() {
         let componentsViewController = ComponentsViewController()
-        componentsViewController.delegate = self
         let nc = UINavigationController(rootViewController: componentsViewController)
         present(nc, animated: true, completion: nil)
     }
@@ -121,6 +101,16 @@ extension TaskViewController: LeftNavigationButtonable {
 extension TaskViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(
         _ tableView: UITableView,
+        commit editingStyle: UITableViewCell.EditingStyle,
+        forRowAt indexPath: IndexPath
+    ) {
+        if editingStyle != .delete { return }
+        self.task.removeComponent(at: indexPath.row)
+        self.tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
         return task.components.count
@@ -136,7 +126,7 @@ extension TaskViewController: UITableViewDelegate, UITableViewDataSource {
         ) as! ViewableTableViewCell<IconInfoView>
         
         let component = task.components[indexPath.row]
-        
+
         cell.baseView.configure(
             icon: component.information.icon,
             color: component.information.color,
@@ -150,13 +140,14 @@ extension TaskViewController: UITableViewDelegate, UITableViewDataSource {
         _ tableView: UITableView,
         heightForRowAt indexPath: IndexPath
     ) -> CGFloat {
-        return 70
+        return 60
     }
     
     func tableView(
         _ tableView: UITableView,
         didSelectRowAt indexPath: IndexPath
     ) {
+        tableView.deselectRow(at: indexPath, animated: true)
         let component = task.components[indexPath.row]
         let vc = component.viewController
         
@@ -168,9 +159,93 @@ extension TaskViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension TaskViewController: ComponentsViewContorllerDelegate {
-//    func componenstViewController(_ viewController: ComponentsViewController, didChoose component: Component) {
-//        //components.append(component)
-//        tableView.reloadData()
-//    }
+
+class __TaskViewController: SPDiffableTableController {
+    
+    weak var delegate: TaskViewControllerDelegate?
+    
+    private var task: Task
+    
+    private let bottomButtom = UIButton()
+
+    init(task: Task? = nil) {
+        self.task = task ?? .empty
+        super.init(nibName: nil, bundle: nil)
+        configureViewController()
+        configureLeftNavigationButton()
+        configureTabButtons()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
+}
+
+private extension __TaskViewController {
+    var content: [SPDiffableSection] {
+        let rows1: [SPDiffableTableRow] = [
+            .init(text: "1")
+        ]
+        
+        return [
+            .init(
+                id: "1",
+                header: nil,
+                footer: nil,
+                items: rows1
+            )
+        ]
+    }
+}
+
+private extension __TaskViewController {
+    func configureTabButtons() {
+        let plusImage = UIImage(systemName: "plus")!
+        let plusButton = UIBarButtonItem(
+            image: plusImage,
+            style: .plain,
+            target: self,
+            action: #selector(didTapEditButton)
+        )
+        
+        let doneButton = UIBarButtonItem(
+            barButtonSystemItem: .done,
+            target: self,
+            action: #selector(didTapSearchButton)
+        )
+        navigationItem.rightBarButtonItems = [doneButton, plusButton]
+    }
+    
+    @objc func didTapEditButton() {}
+    
+    @objc func didTapSearchButton() {}
+    
+    @objc func bottomButtonDidTap() {}
+    
+    func configureViewController() {
+        view.backgroundColor = .systemBackground
+        title = "Task"
+    }
+}
+
+extension __TaskViewController: RightNavigationButtonable {
+    func rightNavigationButtonSystemItem() -> UIBarButtonItem.SystemItem? {
+        return .add
+    }
+    
+    func rightNavigationButtonDidTap() {
+        let componentsViewController = ComponentsViewController()
+        let nc = UINavigationController(rootViewController: componentsViewController)
+        present(nc, animated: true, completion: nil)
+    }
+}
+
+extension __TaskViewController: LeftNavigationButtonable {
+    func leftNavigationButtonDidTap() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func leftNavigationButtonSystemItem() -> UIBarButtonItem.SystemItem? {
+        return .close
+    }
 }

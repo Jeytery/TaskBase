@@ -10,7 +10,7 @@ import UIKit
 
 struct Task {
     
-    var components: [Componentable]
+    private(set) var components: [Componentable]
     
     var descriptionComponent: Componentable {
         for component in components {
@@ -32,7 +32,7 @@ struct Task {
     }
     
     mutating func removeComponent(at index: Int) {
-        
+        components.remove(at: index)
     }
     
     var shouldAppear: Bool {

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SPDiffable
 
 protocol IntervalViewControllerDelegate: AnyObject {
     func intervalViewController(
@@ -17,7 +18,7 @@ protocol IntervalViewControllerDelegate: AnyObject {
 class IntervalViewController: UIViewController {
 
     weak var delegate: IntervalViewControllerDelegate?
-    
+        
     private let listView = ListView(style: .insetGrouped)
     
     private let timeIntervalView = TimeIntervalView()
@@ -41,6 +42,12 @@ class IntervalViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         fatalError()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationItem.largeTitleDisplayMode = .never
+        title = "Interval"
     }
 }
 
@@ -113,5 +120,118 @@ extension IntervalViewController: ComponentViewControllable {
             minutes: getMinutes(date: date),
             hours: getHours(date: date)
         )
+    }
+}
+
+class ___IntervalViewController: SPDiffableTableController, ComponentViewControllable, SPDiffableTableMediator {
+    
+    private var timeWrapper = false {
+        didSet {
+            updateContent(animated: true)
+        }
+    }
+    
+    var content: [SPDiffableSection] {
+        let timeRows: [SPDiffableTableRow] = [
+            .init(
+                text: "Time",
+                detail: nil,
+                icon: UIImage.generateSettingsIcon(
+                    "clock.fill",
+                    backgroundColor: .systemBlue
+                ),
+                accessoryType: .disclosureIndicator,
+                selectionStyle: .default,
+                action: {
+                    [unowned self] _, _ in
+                    self.timeWrapper.toggle()
+                }
+            )
+        ]
+        
+        let timeSection = SPDiffableSection(
+            id: "1",
+            header: nil,
+            footer: nil,
+            items: timeRows
+        )
+        
+        if timeWrapper {
+            timeSection.items.insert(
+                SPDiffableWrapperItem(id: "cell", model: 1, action: nil),
+                at: 1
+            )
+        }
+        
+        
+        let intervalRows: [SPDiffableTableRow] = [
+            .init(
+                text: "Interval",
+                detail: nil,
+                icon: UIImage.generateSettingsIcon(
+                    "clock.arrow.2.circlepath",
+                    backgroundColor: .systemRed
+                ),
+                accessoryType: .disclosureIndicator,
+                selectionStyle: .default,
+                action: nil
+            )
+        ]
+        
+        let intervalSection = SPDiffableSection(
+            id: "2",
+            header: nil,
+            footer: nil,
+            items: intervalRows
+        )
+        
+        return [timeSection, intervalSection]
+    }
+    
+    init() {
+        super.init(style: .insetGrouped)
+        
+        title = "Interval"
+        
+        tableView.delegate = self
+        
+        tableView.register(
+            ViewableTableViewCell<TimeIntervalView>.self,
+            forCellReuseIdentifier: "cell"
+        )
+        
+        let customProvider = SPDiffableTableDataSource.CellProvider() {
+            (tableView, indexPath, item) -> UITableViewCell? in
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            return cell
+        }
+        
+        diffableDataSource?.mediator = self
+        
+        configureDiffable(
+            sections: content,
+            cellProviders: SPDiffableTableDataSource.CellProvider.default + [customProvider]
+        )
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
+    
+    func updateContent(animated: Bool) {
+        diffableDataSource?.set(content, animated: animated)
+    }
+
+    func configure(data: Data) {
+            
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        if indexPath.section == 0, indexPath.row == 1 {
+            return 75
+        }
+        
+        return 60
     }
 }

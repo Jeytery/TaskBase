@@ -11,16 +11,17 @@ import SnapKit
 class TabNavigation: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        //navigationBar.prefersLargeTitles = true
+        navigationBar.prefersLargeTitles = true
     }
 }
 
 class TabViewController: UITabBarController {
     
     private let tabControllers = [
-        TabNavigation(rootViewController: TasksViewController()),
-        TabNavigation(rootViewController: DistributorViewController()),
-        TabNavigation(rootViewController: SettingsViewController())
+        TaskNavigation(),
+        TabNavigation(
+            rootViewController: SettingsViewController()
+        )
     ]
     
     override func viewDidLoad() {

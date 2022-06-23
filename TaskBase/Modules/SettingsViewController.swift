@@ -6,14 +6,27 @@
 //
 
 import UIKit
+import SPDiffable
+import SafeSFSymbols
+import SPSettingsIcons
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: SPDiffableTableController {
    
     init() {
-        super.init(nibName: nil, bundle: nil)
-        view.backgroundColor = .systemBackground
-        tabBarItem = .init(title: nil, image: UIImage(systemName: "gear"), tag: 0)
+        super.init(style: .insetGrouped)
+        
+        tabBarItem = .init(
+            title: nil,
+            image: UIImage(.gear),
+            tag: 0
+        )
+        
         title = "Settings"
+        
+        configureDiffable(
+            sections: content,
+            cellProviders: SPDiffableTableDataSource.CellProvider.default
+        )
     }
     
     required init?(coder: NSCoder) {
@@ -21,3 +34,26 @@ class SettingsViewController: UIViewController {
     }
 }
 
+extension SettingsViewController {
+     var content: [SPDiffableSection] {
+         let rows: [SPDiffableTableRow] = [
+             .init(
+                 text: "Send message to us",
+                 detail: nil,
+                 icon: UIImage.generateSettingsIcon("envelope.fill", backgroundColor: .systemBlue),
+                 accessoryType: .disclosureIndicator,
+                 selectionStyle: .default,
+                 action: nil
+             )
+         ]
+         
+         return [
+             .init(
+                 id: "1",
+                 header: SPDiffableTextHeaderFooter(text: "Social"),
+                 footer: nil,
+                 items: rows
+             )
+         ]
+     }
+}

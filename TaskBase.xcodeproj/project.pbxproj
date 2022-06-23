@@ -31,6 +31,10 @@
 		3EA2A6FF2851286A00E9C5B6 /* DescriptionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA2A6FE2851286A00E9C5B6 /* DescriptionComponent.swift */; };
 		3EA2A701285128B000E9C5B6 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA2A700285128B000E9C5B6 /* Task.swift */; };
 		3EA2A703285128FF00E9C5B6 /* ComponentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA2A702285128FF00E9C5B6 /* ComponentHandler.swift */; };
+		3EB3D60B285E641F00F63AEF /* SPDiffable in Frameworks */ = {isa = PBXBuildFile; productRef = 3EB3D60A285E641F00F63AEF /* SPDiffable */; };
+		3EB3D617285E64F000F63AEF /* SafeSFSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 3EB3D616285E64F000F63AEF /* SafeSFSymbols */; };
+		3EB3D61A285E69D500F63AEF /* SPSettingsIcons in Frameworks */ = {isa = PBXBuildFile; productRef = 3EB3D619285E69D500F63AEF /* SPSettingsIcons */; };
+		3EC19F7F285207E00012E8B4 /* MultipleCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC19F7E285207E00012E8B4 /* MultipleCellView.swift */; };
 		3EC74EAA284CC7A500A2F949 /* TasksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC74EA9284CC7A500A2F949 /* TasksService.swift */; };
 		3EC74ECC284CE2B200A2F949 /* Archivable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC74ECB284CE2B200A2F949 /* Archivable.swift */; };
 		3EEDD804282AD3820065D589 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEDD803282AD3820065D589 /* TaskViewController.swift */; };
@@ -73,6 +77,7 @@
 		3EA2A6FE2851286A00E9C5B6 /* DescriptionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DescriptionComponent.swift; path = TaskBase/Components/Interval/DescriptionComponent.swift; sourceTree = SOURCE_ROOT; };
 		3EA2A700285128B000E9C5B6 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		3EA2A702285128FF00E9C5B6 /* ComponentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentHandler.swift; sourceTree = "<group>"; };
+		3EC19F7E285207E00012E8B4 /* MultipleCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleCellView.swift; sourceTree = "<group>"; };
 		3EC74EA9284CC7A500A2F949 /* TasksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksService.swift; sourceTree = "<group>"; };
 		3EC74ECB284CE2B200A2F949 /* Archivable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archivable.swift; sourceTree = "<group>"; };
 		3EEDD803282AD3820065D589 /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
@@ -94,7 +99,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EB3D617285E64F000F63AEF /* SafeSFSymbols in Frameworks */,
+				3EB3D60B285E641F00F63AEF /* SPDiffable in Frameworks */,
 				3E44903F282824FB00190FE2 /* SnapKit in Frameworks */,
+				3EB3D61A285E69D500F63AEF /* SPSettingsIcons in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +286,7 @@
 			children = (
 				3E46A51228393DA1005371EF /* Protocols */,
 				3EEDD82E282C45550065D589 /* Luma.swift */,
+				3EC19F7E285207E00012E8B4 /* MultipleCellView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -300,6 +309,9 @@
 			name = TaskBase;
 			packageProductDependencies = (
 				3E44903E282824FB00190FE2 /* SnapKit */,
+				3EB3D60A285E641F00F63AEF /* SPDiffable */,
+				3EB3D616285E64F000F63AEF /* SafeSFSymbols */,
+				3EB3D619285E69D500F63AEF /* SPSettingsIcons */,
 			);
 			productName = TaskBase;
 			productReference = 3E449026282824C900190FE2 /* TaskBase.app */;
@@ -331,6 +343,9 @@
 			mainGroup = 3E44901D282824C900190FE2;
 			packageReferences = (
 				3E44903D282824FB00190FE2 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				3EB3D609285E641F00F63AEF /* XCRemoteSwiftPackageReference "DiffableKit" */,
+				3EB3D615285E64F000F63AEF /* XCRemoteSwiftPackageReference "SafeSFSymbols" */,
+				3EB3D618285E69D500F63AEF /* XCRemoteSwiftPackageReference "SPSettingsIcons" */,
 			);
 			productRefGroup = 3E449027282824C900190FE2 /* Products */;
 			projectDirPath = "";
@@ -358,6 +373,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EC19F7F285207E00012E8B4 /* MultipleCellView.swift in Sources */,
 				3E8F688A2843833500120B75 /* IntervalTimeView.swift in Sources */,
 				3EEDD82C282C40E00065D589 /* Icons.swift in Sources */,
 				3E46A51F283A7DD8005371EF /* IntervalViewController.swift in Sources */,
@@ -614,6 +630,30 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		3EB3D609285E641F00F63AEF /* XCRemoteSwiftPackageReference "DiffableKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparrowcode/DiffableKit";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		3EB3D615285E64F000F63AEF /* XCRemoteSwiftPackageReference "SafeSFSymbols" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparrowcode/SafeSFSymbols";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		3EB3D618285E69D500F63AEF /* XCRemoteSwiftPackageReference "SPSettingsIcons" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparrowcode/SPSettingsIcons";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -621,6 +661,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3E44903D282824FB00190FE2 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		3EB3D60A285E641F00F63AEF /* SPDiffable */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3EB3D609285E641F00F63AEF /* XCRemoteSwiftPackageReference "DiffableKit" */;
+			productName = SPDiffable;
+		};
+		3EB3D616285E64F000F63AEF /* SafeSFSymbols */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3EB3D615285E64F000F63AEF /* XCRemoteSwiftPackageReference "SafeSFSymbols" */;
+			productName = SafeSFSymbols;
+		};
+		3EB3D619285E69D500F63AEF /* SPSettingsIcons */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3EB3D618285E69D500F63AEF /* XCRemoteSwiftPackageReference "SPSettingsIcons" */;
+			productName = SPSettingsIcons;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

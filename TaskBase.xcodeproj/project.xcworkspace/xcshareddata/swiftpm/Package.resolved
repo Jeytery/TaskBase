@@ -2,12 +2,39 @@
   "object": {
     "pins": [
       {
+        "package": "SPDiffable",
+        "repositoryURL": "https://github.com/sparrowcode/DiffableKit",
+        "state": {
+          "branch": "main",
+          "revision": "fd80c65d5b63f3c8825f11a06da1f1e91bdf4036",
+          "version": null
+        }
+      },
+      {
+        "package": "SafeSFSymbols",
+        "repositoryURL": "https://github.com/sparrowcode/SafeSFSymbols",
+        "state": {
+          "branch": "main",
+          "revision": "81fff18780a2b4246f4fa2d28aabe3bef0af35b4",
+          "version": null
+        }
+      },
+      {
         "package": "SnapKit",
         "repositoryURL": "https://github.com/SnapKit/SnapKit",
         "state": {
           "branch": null,
           "revision": "f222cbdf325885926566172f6f5f06af95473158",
           "version": "5.6.0"
+        }
+      },
+      {
+        "package": "SPSettingsIcons",
+        "repositoryURL": "https://github.com/sparrowcode/SPSettingsIcons",
+        "state": {
+          "branch": "main",
+          "revision": "f05f8a19d683db3049ef15dd60d0c523f42ebf03",
+          "version": null
         }
       }
     ]
