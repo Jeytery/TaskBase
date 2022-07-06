@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "_Lister",
+        "repositoryURL": "https://github.com/Jeytery/_Lister",
+        "state": {
+          "branch": "master",
+          "revision": "f38eb41fdb108ecc6983afc8319c3bd2722bd28f",
+          "version": null
+        }
+      },
+      {
         "package": "SPDiffable",
         "repositoryURL": "https://github.com/sparrowcode/DiffableKit",
         "state": {

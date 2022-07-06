@@ -21,6 +21,7 @@
 		3E4BF99B2836DDD700A6F24F /* IconInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4BF99A2836DDD700A6F24F /* IconInfoView.swift */; };
 		3E4BF99D2836E3F300A6F24F /* RepeaterTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4BF99C2836E3F300A6F24F /* RepeaterTimeViewController.swift */; };
 		3E7F8A46284E9F3700AC4BC0 /* TaskNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F8A45284E9F3700AC4BC0 /* TaskNavigation.swift */; };
+		3E8317BB2876125E0079D1B9 /* _Lister in Frameworks */ = {isa = PBXBuildFile; productRef = 3E8317BA2876125E0079D1B9 /* _Lister */; };
 		3E8F688A2843833500120B75 /* IntervalTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8F68892843833500120B75 /* IntervalTimeView.swift */; };
 		3E8F688C2843834600120B75 /* IntervalTimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8F688B2843834600120B75 /* IntervalTimePickerView.swift */; };
 		3E8F688E2843834D00120B75 /* IntervalLogicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8F688D2843834D00120B75 /* IntervalLogicView.swift */; };
@@ -102,6 +103,7 @@
 				3EB3D617285E64F000F63AEF /* SafeSFSymbols in Frameworks */,
 				3EB3D60B285E641F00F63AEF /* SPDiffable in Frameworks */,
 				3E44903F282824FB00190FE2 /* SnapKit in Frameworks */,
+				3E8317BB2876125E0079D1B9 /* _Lister in Frameworks */,
 				3EB3D61A285E69D500F63AEF /* SPSettingsIcons in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,6 +314,7 @@
 				3EB3D60A285E641F00F63AEF /* SPDiffable */,
 				3EB3D616285E64F000F63AEF /* SafeSFSymbols */,
 				3EB3D619285E69D500F63AEF /* SPSettingsIcons */,
+				3E8317BA2876125E0079D1B9 /* _Lister */,
 			);
 			productName = TaskBase;
 			productReference = 3E449026282824C900190FE2 /* TaskBase.app */;
@@ -346,6 +349,7 @@
 				3EB3D609285E641F00F63AEF /* XCRemoteSwiftPackageReference "DiffableKit" */,
 				3EB3D615285E64F000F63AEF /* XCRemoteSwiftPackageReference "SafeSFSymbols" */,
 				3EB3D618285E69D500F63AEF /* XCRemoteSwiftPackageReference "SPSettingsIcons" */,
+				3E8317B92876125E0079D1B9 /* XCRemoteSwiftPackageReference "_Lister" */,
 			);
 			productRefGroup = 3E449027282824C900190FE2 /* Products */;
 			projectDirPath = "";
@@ -630,6 +634,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		3E8317B92876125E0079D1B9 /* XCRemoteSwiftPackageReference "_Lister" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Jeytery/_Lister";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		3EB3D609285E641F00F63AEF /* XCRemoteSwiftPackageReference "DiffableKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sparrowcode/DiffableKit";
@@ -661,6 +673,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3E44903D282824FB00190FE2 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		3E8317BA2876125E0079D1B9 /* _Lister */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3E8317B92876125E0079D1B9 /* XCRemoteSwiftPackageReference "_Lister" */;
+			productName = _Lister;
 		};
 		3EB3D60A285E641F00F63AEF /* SPDiffable */ = {
 			isa = XCSwiftPackageProductDependency;

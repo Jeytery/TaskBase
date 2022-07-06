@@ -37,6 +37,6 @@ class IntervalComponent: Componentable {
     }
     
     var viewController: UIViewController & ComponentViewControllable {
-        return ___IntervalViewController()
+        return IntervalViewController()
     }
 }

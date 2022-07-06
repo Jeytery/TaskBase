@@ -7,10 +7,12 @@
 
 import UIKit
 import SnapKit
+import _Lister
 
 class RepeaterViewController: UIViewController, ListViewDataSource, UITableViewDelegate {
     
     private let listView = ListView(style: .insetGrouped)
+    private let lister = Lister(frame: .zero, style: .insetGrouped)
     
     private let timeCell = IconInfoView(
         icon: UIImage(systemName: "clock.fill")!,
@@ -28,17 +30,17 @@ class RepeaterViewController: UIViewController, ListViewDataSource, UITableViewD
         super.init(nibName: nil, bundle: nil)
         
         view.addSubview(listView)
-        listView.snp.makeConstraints() {
-            $0.edges.equalToSuperview()
-        }
-        
-        listView.addViews(
-            [timeCell, repeaterLogicCell]
-        )
-        
-        listView.listDataSource = self
-        listView.delegate = self
-        listView.allowsSelection = true
+//        listView.snp.makeConstraints() {
+//            $0.edges.equalToSuperview()
+//        }
+//        
+//        listView.addViews(
+//            [timeCell, repeaterLogicCell]
+//        )
+//        
+//        listView.listDataSource = self
+//        listView.delegate = self
+//        listView.allowsSelection = true
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .done,
